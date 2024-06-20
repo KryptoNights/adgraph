@@ -1,0 +1,22 @@
+{
+  "name": "openprofile",
+  "version": "1.0.0",
+  "description": "Open graph for advertising",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KryptoNights/openprofile.git"
+  },
+  "author": "debjit (debjitbhowal.db@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KryptoNights/openprofile/issues"
+  },
+  "homepage": "https://github.com/KryptoNights/openprofile#readme",
+  "devDependencies": {
+    "hardhat": "^2.22.5"
+  }
+}
