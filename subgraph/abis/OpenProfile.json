@@ -1,0 +1,107 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "profile",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "app",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "tag",
+        "type": "string"
+      }
+    ],
+    "name": "TagAdded",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" },
+      { "internalType": "string", "name": "tag", "type": "string" }
+    ],
+    "name": "add_tag_to_profile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" }
+    ],
+    "name": "block_app",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "tag", "type": "string" }
+    ],
+    "name": "block_tag",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" }
+    ],
+    "name": "get_apps",
+    "outputs": [{ "internalType": "string[]", "name": "", "type": "string[]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" }
+    ],
+    "name": "get_tags",
+    "outputs": [{ "internalType": "string[]", "name": "", "type": "string[]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "profiles",
+    "outputs": [
+      { "internalType": "address", "name": "owner", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" }
+    ],
+    "name": "remove_app_from_profile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" },
+      { "internalType": "string", "name": "tag", "type": "string" }
+    ],
+    "name": "remove_tag_from_profile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

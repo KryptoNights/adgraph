@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OpenProfile
+    network: base-sepolia
+    source:
+      address: "0x88e4ccc34c4bCE2f33440e2c2C15D61100Ea8A4C"
+      abi: OpenProfile
+      startBlock: 11514696
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TagAdded
+      abis:
+        - name: OpenProfile
+          file: ./abis/OpenProfile.json
+      eventHandlers:
+        - event: TagAdded(address,string,string)
+          handler: handleTagAdded
+      file: ./src/open-profile.ts
