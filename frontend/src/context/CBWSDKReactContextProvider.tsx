@@ -33,7 +33,7 @@ export function CBWSDKReactContextProvider({ children }: CBWSDKProviderProps) {
     let preference;
 
     cbwsdk = new CoinbaseWalletSDK403({
-      appName: "BuilFI",
+      appName: "openProfile",
       appChainIds: [84532, 8452],
     });
     preference = { options: "all" };

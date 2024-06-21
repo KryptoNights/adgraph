@@ -15,7 +15,6 @@ import "@coinbase/onchainkit/styles.css";
 
 const Header = () => {
   const walletInfo = useSelector((state: RootState) => state.walletInfo);
-  const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [DeveloperExists, setDeveloperExists] = useState(false);
@@ -55,34 +54,33 @@ const Header = () => {
   );
 
   useEffect(() => {
-    const accounts = localStorage.getItem("-CBWSDK:SCWStateManager:accounts");
+    const accounts = localStorage.getItem(
+      "-walletlink:https://www.walletlink.org:Addresses"
+    );
+    console.log("connec", accounts);
     if (accounts) {
       setConnected(true);
-      setAccountsChanged(JSON.parse(accounts));
+      setAccountsChanged(accounts);
     }
   }, []);
 
   const handleConnect = async () => {
     setLoading(true);
-    console.log("connn");
-    if (!provider?.connected) {
-      console.log("connn2");
-      await provider.enable();
-      setConnected(true);
-      const tt = localStorage.getItem("-CBWSDK:SCWStateManager:accounts");
-      if (tt) setAccountsChanged(JSON.parse(tt));
-    } else {
-      await provider.disconnect();
-      localStorage.clear();
-    }
+    console.log("connn", provider);
+    console.log("connn2");
+    await provider.enable();
+    setConnected(true);
+    const tt = localStorage.getItem(
+      "-walletlink:https://www.walletlink.org:Addresses"
+    );
+    console.log("connn2", tt);
+    setAccountsChanged(tt);
     setLoading(false);
   };
 
   const handleDisconnect = async () => {
     setLoading(true);
-    if (provider) {
-      await provider.disconnect();
-    }
+    await provider.disconnect();
     localStorage.clear();
     setLoading(false);
   };
@@ -98,6 +96,10 @@ const Header = () => {
     router.push("/create");
   };
 
+  React.useEffect(() => {
+    console.log("connec", accountsChanged);
+  });
+
   return (
     <div className={show ? styles.container : styles.ncontainer}>
       <div className={styles.subContainer1}>
@@ -110,22 +112,6 @@ const Header = () => {
           className="cursor-pointer"
           style={{ filter: "invert(0)", borderRadius: "8px" }}
         />
-        {/* <a href="/projects">Projects</a>
-        <a
-          href="/kyc"
-          className="text-[16px]/[0px] cursor-pointer"
-          onClick={handleRedirect2}
-        >
-          Looking for Funding?{" "}
-        </a> */}
-        {router.pathname === "/projects" && DeveloperExists && (
-          <button
-            className="bg-[#ffffff] hover:bg-[#b7b5b5] text-black font-bold py-2 px-4 rounded"
-            onClick={handleCreateProject}
-          >
-            Create Project
-          </button>
-        )}
       </div>
 
       {loading ? (
@@ -144,13 +130,16 @@ const Header = () => {
             //   )}`}
             // </button>
 
-            <div className="flex h-10 items-center space-x-4">
-              <Avatar address={accountsChanged[0]} showAttestation />
+            <div
+              className="flex h-10 items-center space-x-4"
+              onClick={handleDisconnect}
+            >
+              <Avatar address={accountsChanged} showAttestation />
               <div className="flex flex-col text-sm">
                 <b>
-                  <Name address={accountsChanged[0]} />
+                  <Name address={accountsChanged} />
                 </b>
-                <Name address={accountsChanged[0]} showAddress />
+                <Name address={accountsChanged} showAddress />
               </div>
             </div>
           )}
