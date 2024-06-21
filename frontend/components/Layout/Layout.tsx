@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import styles from "./layout.module.css";
 import useDetectDevice from "../../customhook/useDetectDevice";
 import Header from "../Header/Header";
 

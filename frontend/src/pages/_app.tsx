@@ -23,8 +23,8 @@ function App({ Component, pageProps }: AppProps) {
   const containerStyle = isDefaultPage
     ? {
         backgroundColor: "rgba(39, 46, 53, 0)",
-        backgroundImage:
-          "url(https://assets-global.website-files.com/63996d8b3c061af402fa0609/65c1a9a0012fe086763d8e0c_Illustration.png)",
+        // backgroundImage:
+        //   "url(https://assets-global.website-files.com/63996d8b3c061af402fa0609/65c1a9a0012fe086763d8e0c_Illustration.png)",
         backgroundPosition: "0 0",
         backgroundRepeat: "round",
       }

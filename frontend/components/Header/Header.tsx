@@ -4,7 +4,7 @@ import { Button, CircularProgress } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../src/store/index";
 import Image from "next/image";
-import BuildFI from "public/Build.png";
+import AdGraphLogo from "public/AdGraphLogo.png";
 import { Avatar, Name } from "@coinbase/onchainkit/identity";
 import { OnchainKitProvider } from "@coinbase/onchainkit";
 import { useRouter } from "next/router";
@@ -102,22 +102,22 @@ const Header = () => {
     <div className={show ? styles.container : styles.ncontainer}>
       <div className={styles.subContainer1}>
         <Image
-          src={BuildFI}
+          src={AdGraphLogo}
           alt={"BuildFi"}
           width={180}
           height={40}
           onClick={handleRedirect}
           className="cursor-pointer"
-          style={{ filter: "invert(1)", borderRadius: "8px" }}
+          style={{ filter: "invert(0)", borderRadius: "8px" }}
         />
-        <a href="/projects">Projects</a>
+        {/* <a href="/projects">Projects</a>
         <a
           href="/kyc"
           className="text-[16px]/[0px] cursor-pointer"
           onClick={handleRedirect2}
         >
           Looking for Funding?{" "}
-        </a>
+        </a> */}
         {router.pathname === "/projects" && DeveloperExists && (
           <button
             className="bg-[#ffffff] hover:bg-[#b7b5b5] text-black font-bold py-2 px-4 rounded"
