@@ -10,10 +10,14 @@ import { OnchainKitProvider } from "@coinbase/onchainkit";
 import { useRouter } from "next/router";
 import { useCBWSDK } from "@/context/CBWSDKReactContextProvider";
 import { base } from "viem/chains";
-
+import { useReadContract, useWriteContract } from "wagmi";
 import "@coinbase/onchainkit/styles.css";
-
+import { ABI, CONTRACT } from "@/utils/transitions";
+import { config } from "@/utils/wagmi";
+import { abi } from "./abi";
 const Header = () => {
+  const { writeContract } = useWriteContract();
+
   const walletInfo = useSelector((state: RootState) => state.walletInfo);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -99,7 +103,45 @@ const Header = () => {
   React.useEffect(() => {
     console.log("connec", accountsChanged);
   });
+  const [profileData, setProfileData]: any = useState(null);
+  const fetchProfileData = async (profile: any) => {
+    try {
+      const appsResponse: any = await useReadContract({
+        abi: ABI,
+        address: CONTRACT,
+        functionName: "get_apps",
+        args: [profile],
+      });
 
+      if (!appsResponse.error) {
+        const apps = appsResponse.data;
+        const map = new Map();
+        for (const app of apps) {
+          const tagsResponse: any = await useReadContract({
+            abi: ABI,
+            address: CONTRACT,
+            functionName: "get_tags",
+            args: [profile, app],
+          });
+          if (!tagsResponse.error) {
+            map.set(app, tagsResponse.data);
+          }
+        }
+        setProfileData(map);
+      } else {
+        setProfileData(null);
+      }
+    } catch (error) {
+      console.error(error);
+      setProfileData(null);
+    }
+  };
+
+  const handleGetProfile = () => {
+    if (accountsChanged.length > 0) {
+      fetchProfileData(accountsChanged);
+    }
+  };
   return (
     <div className={show ? styles.container : styles.ncontainer}>
       <div className={styles.subContainer1}>
@@ -154,6 +196,18 @@ const Header = () => {
           </button>
         </>
       )}
+
+      <div style={{ cursor: "pointer" }} onClick={handleGetProfile}>
+        Get Profile
+      </div>
+
+      {/* <button
+        onClick={() =>
+        
+        }
+      >
+        Transfer
+      </button> */}
     </div>
   );
 };

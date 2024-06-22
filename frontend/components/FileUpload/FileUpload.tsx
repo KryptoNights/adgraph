@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./fileupload.module.css";
+import { get_wallets_and_tags_for_image } from "@/utils/transitions";
+import { convertImgToBase64 } from "@/utils/base";
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile]: any = useState(null);
   const [file, setFile]: any = useState(null);
-
+  const [tags, setTags] = useState([]);
+  const [profileTagMap, setProfileTagMap] = useState(new Map());
   const filesizes = (bytes: any, decimals = 2) => {
     if (bytes === 0) return "0 Bytes";
     const k = 1024;
@@ -41,12 +44,22 @@ const FileUpload = () => {
 
   const FileUploadSubmit = async (e: any) => {
     e.preventDefault();
-
-    // form reset on submit
-    e.target.reset();
+    console.log("debug");
     if (selectedFile) {
+      console.log("debug2");
       setFile(selectedFile);
-      setSelectedFile(null);
+      try {
+        const res = await convertImgToBase64(selectedFile.fileimage);
+        console.log(res);
+        const { tags, profile_tag_map } = await get_wallets_and_tags_for_image(
+          selectedFile.fileimage
+        );
+        console.log("debug", tags, profileTagMap);
+        setTags(tags);
+        setProfileTagMap(profile_tag_map);
+      } catch (error) {
+        console.error("Error fetching tags and profile tag map:", error);
+      }
     } else {
       alert("Please select a file");
     }
@@ -147,6 +160,7 @@ const FileUpload = () => {
           </div>
         )}
       </div>
+
       <div className={styles.secondBox}> Tags for Images</div>
     </div>
   );
