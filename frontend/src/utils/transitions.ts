@@ -255,3 +255,20 @@ async function ai_tagger(image: string): Promise<string[]> {
     console.log(response.data);
     return response.data as string[];
 }
+
+export async function get_wallets_and_tags_for_image(image: string): Promise<any> {
+    const tags = await ai_tagger(image);
+    const tagAddeds = await fetchTagAddeds({ tag_in: tags });
+
+    const profile_tag_map = new Map<string, string>();
+    for (const tagAdded of tagAddeds) {
+        if (!profile_tag_map.has(tagAdded.profile)) {
+            profile_tag_map.set(tagAdded.profile, tagAdded.tag);
+        }
+    }
+
+    return {
+        tags,
+        profile_tag_map
+    }
+}
