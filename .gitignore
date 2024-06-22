@@ -18,6 +18,7 @@ ignition/deployments/chain-31337
 
 node_modules/
 afn.js
+bundledfunction.js
 
 env/
 key.json
