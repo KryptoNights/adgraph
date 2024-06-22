@@ -41,7 +41,8 @@
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "wagmi": "^2.10.4"
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",

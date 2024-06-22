@@ -1,0 +1,9 @@
+type TagAdded @entity(immutable: true) {
+  id: Bytes!
+  profile: Bytes! # address
+  app: String! # string
+  tag: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

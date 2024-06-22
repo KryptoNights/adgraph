@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AdGraph
+    network: base-sepolia
+    source:
+      address: "0x8DE856c047F065E766Eb74737AD26f4D45D63C12"
+      abi: AdGraph
+      startBlock: 11633798
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TagAdded
+      abis:
+        - name: AdGraph
+          file: ./abis/AdGraph.json
+      eventHandlers:
+        - event: TagAdded(address,string,string)
+          handler: handleTagAdded
+      file: ./src/ad-graph.ts

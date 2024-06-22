@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "AdGraph": {
+      "address": "0x8DE856c047F065E766Eb74737AD26f4D45D63C12",
+      "startBlock": 11633798
+    }
+  }
+}
