@@ -205,9 +205,11 @@ interface Variables {
 }
 
 async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
+    // convert string[] to [a, b, c] format
+    const tag_string = JSON.stringify(tags.tag_in);
     const query = `
-    query MyQuery($tag_in: [String!]) {
-      tagAddeds(where: {tag_in: $tag_in}) {
+    query MyQuery {
+      tagAddeds(where: {tag_in: ${tag_string}}) {
         profile
         app
         id
@@ -215,11 +217,10 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
       }
     }
   `;
-
+    console.log(query);
     try {
         const response = await axios.post("https://api.studio.thegraph.com/query/80137/adgraph/v0.0.3", {
             query,
-            tags,
         }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -257,11 +258,18 @@ async function ai_tagger(image: string): Promise<string[]> {
     }
 
     console.log(response.data);
-    return response.data as string[];
+    const tags = [];
+    for (const tag of response.data) {
+        // lowercase and trimmed
+        tags.push(tag.toLowerCase().trim());
+    }
+    return tags;
 }
 
 export async function get_wallets_and_tags_for_image(image: string): Promise<any> {
     const tags = await ai_tagger(image);
+    console.log("tags");
+    console.log(typeof tags);
     const tagAddeds = await fetchTagAddeds({ tag_in: tags });
 
     const profile_tag_map = new Map<string, string>();
