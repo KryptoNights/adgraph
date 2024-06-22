@@ -240,9 +240,9 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
 
 // image in base64 encoded string
 async function ai_tagger(image: string): Promise<string[]> {
-    const response = await axios.post("https://us-central1-my-project-5269-1684667148053.cloudfunctions.net/adgraph-ai", JSON.stringify({
+    const response = await axios.post("https://us-central1-my-project-5269-1684667148053.cloudfunctions.net/adgraph-ai", {
         base64_image: image,
-    }), {
+    }, {
         headers: {
             'Content-Type': 'application/json',
         },
