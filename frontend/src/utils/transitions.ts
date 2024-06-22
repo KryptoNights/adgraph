@@ -237,3 +237,21 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
     throw error; // Re-throw for further handling
   }
 }
+
+// image in base64 encoded string
+async function ai_tagger(image: string): Promise<string[]> {
+    const response = await axios.post("https://us-central1-my-project-5269-1684667148053.cloudfunctions.net/adgraph-ai", JSON.stringify({
+        base64_image: image,
+    }), {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.data.errors) {
+        throw new Error(JSON.stringify(response.data.errors));
+    }
+
+    console.log(response.data);
+    return response.data as string[];
+}
