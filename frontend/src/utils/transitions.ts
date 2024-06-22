@@ -190,3 +190,50 @@ export async function remove_tag_from_profile(profile: string, app: string, tag:
         args: [profile, app, tag]
     });
 }
+
+import axios from 'axios';
+
+interface TagAdded {
+  profile: string;
+  app: string;
+  id: string;
+  tag: string;
+}
+
+interface Variables {
+  tag_in: string[];
+}
+
+async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
+  const query = `
+    query MyQuery($tag_in: [String!]) {
+      tagAddeds(where: {tag_in: $tag_in}) {
+        profile
+        app
+        id
+        tag
+      }
+    }
+  `;
+
+  try {
+    const response = await axios.post("https://api.studio.thegraph.com/query/80137/adgraph/v0.0.3", {
+      query,
+      tags,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.data.errors) {
+      throw new Error(JSON.stringify(response.data.errors));
+    }
+
+    console.log(response.data);
+    return response.data.data.tagAddeds;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error; // Re-throw for further handling
+  }
+}
