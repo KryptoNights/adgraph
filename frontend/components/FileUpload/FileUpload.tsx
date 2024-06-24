@@ -188,22 +188,38 @@ const FileUpload = () => {
       <div className={styles.secondBox}>
         <div>
           <span>Tags for Images</span>
-          <Stack direction="row" spacing={1} className={styles.chipContainer}>
-            {tags.map((tag, index) => (
-              <Chip
-                key={index}
-                label={tag}
-                style={{
-                  color: "black",
-                  backgroundColor: tagColors[tag],
-                  marginBottom: "8px",
-                }}
-              />
-            ))}
-          </Stack>
+          <div className={styles.tagsDiv}>
+            <Stack direction="row" spacing={1} className={styles.chipContainer}>
+              {tags.map((tag, index) => (
+                // <Chip
+                //   key={index}
+                //   label={tag}
+                //   style={{
+                //     color: "black",
+                //     backgroundColor: tagColors[tag],
+                //     marginBottom: "8px",
+                //   }}
+                // />
+                <span
+                  key={tag}
+                  className={styles.tag}
+                  style={{
+                    backgroundColor: getRandomColor(predefinedColors),
+                    marginBottom: "5px",
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </Stack>
+          </div>
         </div>
-        <div>
-          <span>addresses</span>
+        <div
+          style={{
+            marginTop: "7px",
+          }}
+        >
+          <span>Addresses</span>
           <Stack direction="row" spacing={1} className={styles.chipContainer}>
             {Array.from(profileTagMap.entries()).map(
               ([address, tags], index) => (
@@ -211,15 +227,15 @@ const FileUpload = () => {
                   <div>{address}</div>
                   <div>
                     {tags.map((tag: string, tagIndex: number) => (
-                      <Chip
+                      <span
                         key={tagIndex}
-                        label={tag}
+                        className={styles.tag}
                         style={{
-                          color: "black",
-                          backgroundColor: tagColors[tag],
-                          marginBottom: "8px",
+                          backgroundColor: getRandomColor(predefinedColors),
                         }}
-                      />
+                      >
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>

@@ -53,3 +53,17 @@
 
   margin-top: 42px;
 }
+
+.tagsDiv {
+  background-color: rgb(143 119 112);
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  color: black;
+  font-size: 0.9em;
+}
