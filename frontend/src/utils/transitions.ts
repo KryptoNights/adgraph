@@ -128,21 +128,21 @@ export const CONTRACT = "0x1966cc76d20c88EF2C30d12F61ca4509Cc1f228C";
 // const { writeContract } = useWriteContract();
 
 const baseProvider = new JsonRpcProvider(
-    "https://base-sepolia.g.alchemy.com/v2/iuu-FM9fYkPCrqX6OQtAy1GRpxRZHsuR"
+  "https://base-sepolia.g.alchemy.com/v2/iuu-FM9fYkPCrqX6OQtAy1GRpxRZHsuR"
 );
 
 export const get_profile = async (profile: string) => {
-    const adgraph = new Contract(CONTRACT, ABI, baseProvider);
+  const adgraph = new Contract(CONTRACT, ABI, baseProvider);
 
-    console.log("get_profile", profile, typeof profile);
-    const apps = await adgraph?.get_apps(profile) as string[];
+  console.log("get_profile", profile, typeof profile);
+  const apps = await adgraph?.get_apps(profile) as string[];
 
-    const map = new Map<string, string[]>();
-    for (const app of apps) {
-        const tags = await adgraph?.get_tags(profile, app) as string[];
-        map.set(app, tags);
-    }
-    return map;
+  const map = new Map<string, string[]>();
+  for (const app of apps) {
+    const tags = await adgraph?.get_tags(profile, app) as string[];
+    map.set(app, tags);
+  }
+  return map;
 }
 
 // export async function block_app(profile: string, app: string) {
@@ -214,7 +214,7 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
   console.log(query);
   try {
     const response = await axios.post(
-      "https://api.studio.thegraph.com/query/80137/adgraph/v0.0.3",
+      "https://api.studio.thegraph.com/query/80137/adgraph/v0.0.4",
       {
         query,
       },
@@ -267,6 +267,8 @@ export async function get_wallets_and_tags_for_image(
   console.log("tags");
   console.log(typeof tags);
   const tagAddeds = await fetchTagAddeds({ tag_in: tags });
+  // console.log("tagAddeds");
+  // console.log(tagAddeds);
 
   const profile_tag_map = new Map<string, string>();
   for (const tagAdded of tagAddeds) {
