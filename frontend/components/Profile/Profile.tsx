@@ -3,28 +3,22 @@ import styles from "./profile.module.css";
 import { color } from "framer-motion";
 import { get_profile } from "@/utils/transitions";
 
-const profiles = [
-  { name: "Health", tags: ["Etc", "Event", "Personal", "Fun"] },
-  { name: "Event", tags: ["Etc.", "Event", "Personal"] },
-  { name: "Work", tags: ["Etc.", "Event", "Personal", "Fun"] },
-  { name: "Personal", tags: ["Etc.", "Event", "Fun"] },
-];
-
-const tagColors = {
-  Etc: "#d1c4e9",
-  Event: "#b2fab4",
-  Work: "#ffcc80",
-  Personal: "#ffab91",
-  Fun: "#ffe082",
-  Health: "#b3e5fc",
+const tagColors: any = {
+  0: "#d1c4e9",
+  1: "#b2fab4",
+  2: "#ffcc80",
+  3: "#ffab91",
+  4: "#ffe082",
+  5: "#b3e5fc",
 };
 
-const getRandomColor = (tagColors: any, tag: any) => {
-  return tagColors[tag] || "#e0e0e0";
+const getRandomColor = (index: number) => {
+  return tagColors[index % 6];
 };
 
 const ProfileList = () => {
-  const [profileData, setProfileData]: any = React.useState([]);
+  const [tags, setTagsData]: any = React.useState([]);
+  const [appName, setAppName]: any = React.useState([]);
   const [accountsChanged, setAccountsChanged]: any = React.useState(null);
   React.useEffect(() => {
     const accounts = localStorage.getItem(
@@ -41,61 +35,60 @@ const ProfileList = () => {
       console.log("accountsChanged", accountsChanged, typeof accountsChanged);
       const profile = await get_profile(String(accountsChanged));
       console.log("getprofile", profile);
-      setProfileData(profile);
+      let arr: any[] = [];
+      let arr2: any[] = [];
+      profile.forEach((key: any, value: any) => {
+        arr.push(key);
+        arr2.push(value);
+      });
+      setAppName(arr2);
+      setTagsData(arr);
     };
     if (accountsChanged != null) fetchdata(accountsChanged);
   }, [accountsChanged]);
 
+  React.useEffect(() => {
+    console.log("profileData", tags[0]);
+  }, [tags, appName]);
+
   return (
     <div className={styles.profileList}>
-      <div className={styles.header}>
-        <span
-          style={{
-            color: "black",
-          }}
-        >
-          Name
-        </span>
-        <span
-          style={{
-            color: "black",
-          }}
-        >
-          Tags
-        </span>
+      <div className={styles.wrapper}>
+        <div className={styles.box1}>
+          {appName &&
+            appName.map((item: any, indexMain: number) => {
+              return (
+                <div className={styles.ProfileName}>
+                  <h3
+                    style={{
+                      color: "white",
+                      fontSize: "24px",
+                    }}
+                  >
+                    {item}
+                  </h3>
+                  <div className={styles.profileTags}>
+                    {tags[indexMain].map((tag: any, index: any) => (
+                      <>
+                        <span
+                          key={index}
+                          className={styles.tag}
+                          style={{
+                            backgroundColor: getRandomColor(Number(index)),
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      </>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+        </div>
       </div>
-      {profiles.map((profile, index) => (
-        <Profile key={index} name={profile.name} tags={profile.tags} />
-      ))}
     </div>
   );
 };
 
 export default ProfileList;
-
-const Profile = ({ name, tags }: any) => {
-  return (
-    <>
-      <div className={styles.ProfileName}>
-        <h3
-          style={{
-            color: "black",
-          }}
-        >
-          {name}
-        </h3>
-      </div>
-      <div className={styles.profileTags}>
-        {tags.map((tag: any, index: any) => (
-          <span
-            key={index}
-            className={styles.tag}
-            style={{ backgroundColor: getRandomColor(tagColors, tag) }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </>
-  );
-};

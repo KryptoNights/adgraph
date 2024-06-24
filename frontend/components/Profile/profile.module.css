@@ -50,3 +50,17 @@
   color: black;
   font-size: 0.9em;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.box1 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 80px;
+}
