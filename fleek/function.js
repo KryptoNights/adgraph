@@ -66,11 +66,16 @@ export const main = async (request) => {
         },
     });
 
-    const callData = encodeFunctionData({
+    const callData = request.query.tag ? encodeFunctionData({
         abi: abi,
         functionName: "add_tag_to_profile",
         args: [request.query.profile, request.query.app, request.query.tag],
         // args: ["0xAbaF6454eaC9DEA588f04193cfE55eD719Dd97B9", "app1", "bananas"],
+    }) : encodeFunctionData({
+        abi: abi,
+        functionName: "add_tags_to_profile",
+        args: [request.query.profile, request.query.app, request.query.tags.split(",")],
+        // args: ["0xAbaF6454eaC9DEA588f04193cfE55eD719Dd97B9", "app1", ["bananas", "apples"]],
     });
 
     const txHash = await smartAccountClient.sendTransaction({
