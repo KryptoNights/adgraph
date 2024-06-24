@@ -13,7 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
 import { base } from "viem/chains";
 import { OnchainKitProvider } from "@coinbase/onchainkit";
-import { wagmiConfig } from "@/utils/wagmi";
+import { config, wagmiConfig } from "@/utils/wagmi";
 
 const SCHEMA_ID =
   "0xf8b05c79f090979bf4a80270aba232dff11a10d9ca55c4f88de95317970f0de9";
@@ -58,7 +58,7 @@ function App({ Component, pageProps }: AppProps) {
         <div className="w-full bg-black">
           <CBWSDKReactContextProvider>
             <Provider store={store}>
-              <WagmiProvider config={wagmiConfig}>
+              <WagmiProvider config={config}>
                 <QueryClientProvider client={queryClient}>
                   <OnchainKitProvider
                     chain={base}

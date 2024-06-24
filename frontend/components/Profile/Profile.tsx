@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./profile.module.css";
 import { color } from "framer-motion";
-import { get_profile } from "@/utils/transitions";
+import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
+import { useWriteContract } from "wagmi";
 
 const tagColors: any = {
   0: "#d1c4e9",
@@ -17,6 +18,7 @@ const getRandomColor = (index: number) => {
 };
 
 const ProfileList = () => {
+  const { writeContract } = useWriteContract();
   const [tags, setTagsData]: any = React.useState([]);
   const [appName, setAppName]: any = React.useState([]);
   const [accountsChanged, setAccountsChanged]: any = React.useState(null);
@@ -75,6 +77,16 @@ const ProfileList = () => {
                           className={styles.tag}
                           style={{
                             backgroundColor: getRandomColor(Number(index)),
+                          }}
+                          onClick={() => {
+                            console.log("inside");
+                            writeContract({
+                              abi: ABI,
+                              address: CONTRACT,
+                              functionName: "remove_tag_from_profile",
+                              args: [accountsChanged, item, tag],
+                            });
+                            console.log("exec");
                           }}
                         >
                           {tag}
