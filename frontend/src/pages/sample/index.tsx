@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import useDetectDevice from "../../../customhook/useDetectDevice";
 import WrapperCard from "../../../components/Card/Card";
+import { dummyData } from "@/constant/dummyData";
 
 const styles = {
   gridContainer: {
@@ -15,12 +16,20 @@ const styles = {
 const Sample: React.FC = () => {
   const res = useDetectDevice();
   const router = useRouter();
-
+  const [address, setAddress] = React.useState("");
+  React.useEffect(() => {
+    const accounts = localStorage.getItem(
+      "-walletlink:https://www.walletlink.org:Addresses"
+    );
+    if (accounts) {
+      setAddress(accounts);
+    }
+  }, []);
   return (
     <div style={styles.gridContainer}>
-      <WrapperCard />
-      <WrapperCard />
-      <WrapperCard />
+      {dummyData.map((item: any, index: number) => {
+        return <WrapperCard key={index} data={item} address={address} />;
+      })}
     </div>
   );
 };

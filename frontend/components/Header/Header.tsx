@@ -15,22 +15,12 @@ import "@coinbase/onchainkit/styles.css";
 import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
 import { config } from "@/utils/wagmi";
 import { abi } from "./abi";
-import useFetchProfileData from "./FetchProfileData";
+import { setWalletInfo } from "@/store/slice/walletinfo";
 const Header = () => {
-  const { writeContract } = useWriteContract();
-
-  const walletInfo = useSelector((state: RootState) => state.walletInfo);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [DeveloperExists, setDeveloperExists] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [connect, setConnect] = React.useState<
-    Record<string, unknown> | string | number | null
-  >(null);
-  const [disconnect, setDisconnect] = React.useState<
-    Record<string, unknown> | string | number | null
-  >(null);
-  const [accountsChanged, setAccountsChanged]: any = React.useState([]);
+  const [accountsChanged, setAccountsChanged]: any = React.useState(null);
   const [chainChanged, setChainChanged] = React.useState<
     Record<string, unknown> | string | number | null
   >(null);
@@ -62,6 +52,9 @@ const Header = () => {
     const accounts = localStorage.getItem(
       "-walletlink:https://www.walletlink.org:Addresses"
     );
+    setWalletInfo({
+      address: accounts,
+    });
     console.log("connec", accounts);
     if (accounts) {
       setConnected(true);
@@ -78,6 +71,7 @@ const Header = () => {
     const tt = localStorage.getItem(
       "-walletlink:https://www.walletlink.org:Addresses"
     );
+    setWalletInfo(tt);
     console.log("connn2", tt);
     setAccountsChanged(tt);
     setLoading(false);
@@ -94,60 +88,6 @@ const Header = () => {
   const handleRedirect = () => {
     router.push("/");
   };
-  const handleRedirect2 = () => {
-    router.push("./kyc");
-  };
-  const handleCreateProject = () => {
-    router.push("/create");
-  };
-
-  
-  React.useEffect(() => {
-    const fetchdata = async (accountsChanged: any) => {
-      console.log("accountsChanged", accountsChanged, typeof accountsChanged);
-      const profile = await get_profile(String(accountsChanged));
-      console.log("getprofile", profile);
-    };
-    fetchdata(accountsChanged);
-    console.log("connec", accountsChanged);
-  });
-  const [profileData, setProfileData]: any = useState(null);
-  // const fetchProfileData = async (profile: any) => {
-  //   try {
-  //     const appsResponse: any = await useReadContract({
-  //       abi: ABI,
-  //       address: CONTRACT,
-  //       functionName: "get_apps",
-  //       args: [profile],
-  //     });
-
-  //     console.log(appsResponse);
-
-  //     // if (!appsResponse.error) {
-  //     //   const apps = appsResponse.data;
-  //     //   const map = new Map();
-  //     //   for (const app of apps) {
-  //     //     const tagsResponse: any = await useReadContract({
-  //     //       abi: ABI,
-  //     //       address: CONTRACT,
-  //     //       functionName: "get_tags",
-  //     //       args: [profile, app],
-  //     //     });
-  //     //     if (!tagsResponse.error) {
-  //     //       map.set(app, tagsResponse.data);
-  //     //     }
-  //     //   }
-  //     // setProfileData(map);
-  //     // } else {
-  //     //   setProfileData(null);
-  //     // }
-  //   } catch (error) {
-  //     console.error(error);
-  //     setProfileData(null);
-  //   }
-  // };
-
-  useFetchProfileData(accountsChanged);
 
   return (
     <div className={show ? styles.container : styles.ncontainer}>
@@ -168,17 +108,6 @@ const Header = () => {
       ) : connected ? (
         <>
           {accountsChanged && accountsChanged[0] && (
-            // <button
-            //   className="bg-[#ffffff] hover:bg-[#b7b5b5] text-black font-bold py-2 px-8 rounded"
-            //   onClick={handleDisconnect}
-            // >
-            //   {/* 🟢 <Avatar address="0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9" /> */}
-
-            //   {`${accountsChanged[0].slice(0, 4)}....${accountsChanged[0].slice(
-            //     -4
-            //   )}`}
-            // </button>
-
             <div
               className="flex h-10 items-center space-x-4"
               onClick={handleDisconnect}
@@ -203,16 +132,6 @@ const Header = () => {
           </button>
         </>
       )}
-
-      <div style={{ cursor: "pointer" }}>Get Profile</div>
-
-      {/* <button
-        onClick={() =>
-        
-        }
-      >
-        Transfer
-      </button> */}
     </div>
   );
 };
