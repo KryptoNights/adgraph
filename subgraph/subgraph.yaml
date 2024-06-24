@@ -8,9 +8,9 @@ dataSources:
     name: AdGraph
     network: base-sepolia
     source:
-      address: "0x1966cc76d20c88EF2C30d12F61ca4509Cc1f228C"
+      address: "0xfa80Be5293e080B34E551ca7edB4d795F9B647e1"
       abi: AdGraph
-      startBlock: 11634334
+      startBlock: 11736577
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

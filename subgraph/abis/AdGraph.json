@@ -38,6 +38,17 @@
   {
     "inputs": [
       { "internalType": "address", "name": "profile", "type": "address" },
+      { "internalType": "string", "name": "app", "type": "string" },
+      { "internalType": "string[]", "name": "tags", "type": "string[]" }
+    ],
+    "name": "add_tags_to_profile",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" },
       { "internalType": "string", "name": "app", "type": "string" }
     ],
     "name": "block_app",
@@ -61,6 +72,18 @@
     ],
     "name": "get_apps",
     "outputs": [{ "internalType": "string[]", "name": "", "type": "string[]" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "profile", "type": "address" }
+    ],
+    "name": "get_blocked_apps_and_tags",
+    "outputs": [
+      { "internalType": "string[]", "name": "", "type": "string[]" },
+      { "internalType": "string[]", "name": "", "type": "string[]" }
+    ],
     "stateMutability": "view",
     "type": "function"
   },

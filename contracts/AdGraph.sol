@@ -56,12 +56,24 @@ contract AdGraph {
         }
         if (!tag_exists) {
             profiles[profile].tags[app].push(tag);
+
+            // emit event
+            emit TagAdded(profile, app, tag);
         }
 
-        // emit event
-        emit TagAdded(profile, app, tag);
 
-        // return
+        return;
+    }
+
+    function add_tags_to_profile(
+        address profile,
+        string calldata app,
+        string[] calldata tags
+    ) public {
+        for (uint256 i = 0; i < tags.length; i++) {
+            add_tag_to_profile(profile, app, tags[i]);
+        }
+
         return;
     }
 
@@ -76,7 +88,6 @@ contract AdGraph {
         // add tag to blocked tags
         profiles[profile].blocked_tags.push(tag);
 
-        // return
         return;
     }
 
@@ -91,7 +102,6 @@ contract AdGraph {
         // add app to blocked apps
         profiles[profile].blocked_apps.push(app);
 
-        // return
         return;
     }
 
@@ -116,7 +126,6 @@ contract AdGraph {
             }
         }
 
-        // return
         return;
     }
 
@@ -137,7 +146,6 @@ contract AdGraph {
             }
         }
 
-        // return
         return;
     }
 
@@ -152,5 +160,13 @@ contract AdGraph {
     {
         // payment logic
         return profiles[profile].tags[app];
+    }
+
+    function get_blocked_apps_and_tags(address profile)
+        public
+        view
+        returns (string[] memory, string[] memory)
+    {
+        return (profiles[profile].blocked_apps, profiles[profile].blocked_tags);
     }
 }
