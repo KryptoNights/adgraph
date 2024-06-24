@@ -122,6 +122,30 @@ export const ABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "profile",
+        "type": "address"
+      }
+    ],
+    "name": "get_blocked_apps_and_tags",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      },
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
 ];
 export const CONTRACT = "0xfa80Be5293e080B34E551ca7edB4d795F9B647e1";
 
@@ -143,7 +167,18 @@ export const get_profile = async (profile: string) => {
     map.set(app, tags);
   }
   return map;
-}
+};
+
+export const get_blocked_apps_and_tags = async (profile: string) => {
+  const adgraph = new Contract(CONTRACT, ABI, baseProvider);
+
+  const [blocked_apps, blocked_tags] = await adgraph?.get_blocked_apps_and_tags(profile) as string[][];
+
+  return {
+    blocked_apps,
+    blocked_tags,
+  };
+};
 
 // export async function block_app(profile: string, app: string) {
 //   return writeContract({
