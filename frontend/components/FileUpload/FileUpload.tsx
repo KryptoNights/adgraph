@@ -1,15 +1,33 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import styles from "./fileupload.module.css";
 import { get_wallets_and_tags_for_image } from "@/utils/transitions";
 import { convertImgToBase64 } from "@/utils/base";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+
+// Predefined set of colors
+const predefinedColors = [
+  "#d1c4e9",
+  "#b2fab4",
+  "#ffcc80",
+  "#ffab91",
+  "#ffe082",
+  "#b3e5fc",
+];
+
+// Function to get a random color from the predefined set
+const getRandomColor = (colors: string[]) => {
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 
 const FileUpload = () => {
-  const [selectedFile, setSelectedFile]: any = useState(null);
-  const [file, setFile]: any = useState(null);
-  const [tags, setTags] = useState([]);
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [file, setFile] = useState<any>(null);
+  const [tags, setTags] = useState<string[]>([]);
   const [profileTagMap, setProfileTagMap] = useState(new Map());
-  const filesizes = (bytes: any, decimals = 2) => {
+  const [tagColors, setTagColors] = useState<{ [key: string]: string }>({});
+
+  const filesizes = (bytes: number, decimals = 2) => {
     if (bytes === 0) return "0 Bytes";
     const k = 1024;
     const dm = decimals < 0 ? 0 : decimals;
@@ -19,7 +37,7 @@ const FileUpload = () => {
   };
 
   const InputChange = (e: any) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (file) {
       let reader = new FileReader();
       reader.onloadend = () => {
@@ -42,21 +60,27 @@ const FileUpload = () => {
     }
   };
 
-  const FileUploadSubmit = async (e: any) => {
+  const FileUploadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("debug");
     if (selectedFile) {
-      console.log("debug2");
       setFile(selectedFile);
       try {
         const res = await convertImgToBase64(selectedFile.fileimage);
-        console.log(res);
         const { tags, profile_tag_map } = await get_wallets_and_tags_for_image(
           selectedFile.fileimage
         );
-        console.log("debug", tags, profileTagMap);
+
+        // Assign random colors to tags
+        const colors: { [key: string]: string } = {};
+        tags.forEach((tag: any) => {
+          colors[tag] = getRandomColor(predefinedColors);
+        });
+        console.log(tags);
+        console.log(profile_tag_map);
+
         setTags(tags);
         setProfileTagMap(profile_tag_map);
+        setTagColors(colors);
       } catch (error) {
         console.error("Error fetching tags and profile tag map:", error);
       }
@@ -161,7 +185,49 @@ const FileUpload = () => {
         )}
       </div>
 
-      <div className={styles.secondBox}> Tags for Images</div>
+      <div className={styles.secondBox}>
+        <div>
+          <span>Tags for Images</span>
+          <Stack direction="row" spacing={1} className={styles.chipContainer}>
+            {tags.map((tag, index) => (
+              <Chip
+                key={index}
+                label={tag}
+                style={{
+                  color: "black",
+                  backgroundColor: tagColors[tag],
+                  marginBottom: "8px",
+                }}
+              />
+            ))}
+          </Stack>
+        </div>
+        <div>
+          <span>addresses</span>
+          <Stack direction="row" spacing={1} className={styles.chipContainer}>
+            {Array.from(profileTagMap.entries()).map(
+              ([address, tags], index) => (
+                <div key={index}>
+                  <div>{address}</div>
+                  <div>
+                    {tags.map((tag: string, tagIndex: number) => (
+                      <Chip
+                        key={tagIndex}
+                        label={tag}
+                        style={{
+                          color: "black",
+                          backgroundColor: tagColors[tag],
+                          marginBottom: "8px",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
+          </Stack>
+        </div>
+      </div>
     </div>
   );
 };

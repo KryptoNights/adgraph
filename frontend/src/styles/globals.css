@@ -74,10 +74,10 @@ a:hover {
   margin-bottom: 20px;
 }
 .file-upload-box {
-  border: 1px dashed #b6bed1;
-  background-color: #f0f2f7;
+  border: 1px dashed #034fe9;
+  background-color: #89a4e9;
   border-radius: 4px;
-  min-height: 150px;
+  min-height: 50px;
   position: relative;
   overflow: hidden;
   padding: 15px;

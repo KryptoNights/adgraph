@@ -3,11 +3,21 @@
   flex-direction: column;
   width: 40%;
 }
+
 .secondBox {
   display: flex;
   flex-direction: column;
   width: 40%;
 }
+
+.chipContainer {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  /* color: black; */
+}
+
 .fileuploadview {
   margin-top: 60px;
   display: flex;
@@ -22,6 +32,7 @@
   cursor: pointer;
   margin-bottom: 12px;
 }
+
 .txt2 {
   font-size: 14px;
   cursor: pointer;

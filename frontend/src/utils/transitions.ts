@@ -124,7 +124,7 @@ export const ABI = [
 ];
 export const CONTRACT = "0x1966cc76d20c88EF2C30d12F61ca4509Cc1f228C";
 
-const { writeContract } = useWriteContract();
+// const { writeContract } = useWriteContract();
 
 export async function get_profile(profile: string) {
   const apps_response = useReadContract({
@@ -239,7 +239,7 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
       throw new Error(JSON.stringify(response.data.errors));
     }
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data.data.tagAddeds;
   } catch (error) {
     console.error("Error fetching data:", error);
