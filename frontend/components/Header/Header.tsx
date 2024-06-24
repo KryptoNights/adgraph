@@ -15,6 +15,7 @@ import "@coinbase/onchainkit/styles.css";
 import { ABI, CONTRACT } from "@/utils/transitions";
 import { config } from "@/utils/wagmi";
 import { abi } from "./abi";
+import useFetchProfileData from "./FetchProfileData";
 const Header = () => {
   const { writeContract } = useWriteContract();
 
@@ -104,44 +105,43 @@ const Header = () => {
     console.log("connec", accountsChanged);
   });
   const [profileData, setProfileData]: any = useState(null);
-  const fetchProfileData = async (profile: any) => {
-    try {
-      const appsResponse: any = await useReadContract({
-        abi: ABI,
-        address: CONTRACT,
-        functionName: "get_apps",
-        args: [profile],
-      });
+  // const fetchProfileData = async (profile: any) => {
+  //   try {
+  //     const appsResponse: any = await useReadContract({
+  //       abi: ABI,
+  //       address: CONTRACT,
+  //       functionName: "get_apps",
+  //       args: [profile],
+  //     });
 
-      if (!appsResponse.error) {
-        const apps = appsResponse.data;
-        const map = new Map();
-        for (const app of apps) {
-          const tagsResponse: any = await useReadContract({
-            abi: ABI,
-            address: CONTRACT,
-            functionName: "get_tags",
-            args: [profile, app],
-          });
-          if (!tagsResponse.error) {
-            map.set(app, tagsResponse.data);
-          }
-        }
-        setProfileData(map);
-      } else {
-        setProfileData(null);
-      }
-    } catch (error) {
-      console.error(error);
-      setProfileData(null);
-    }
-  };
+  //     console.log(appsResponse);
 
-  const handleGetProfile = () => {
-    if (accountsChanged.length > 0) {
-      fetchProfileData(accountsChanged);
-    }
-  };
+  //     // if (!appsResponse.error) {
+  //     //   const apps = appsResponse.data;
+  //     //   const map = new Map();
+  //     //   for (const app of apps) {
+  //     //     const tagsResponse: any = await useReadContract({
+  //     //       abi: ABI,
+  //     //       address: CONTRACT,
+  //     //       functionName: "get_tags",
+  //     //       args: [profile, app],
+  //     //     });
+  //     //     if (!tagsResponse.error) {
+  //     //       map.set(app, tagsResponse.data);
+  //     //     }
+  //     //   }
+  //     // setProfileData(map);
+  //     // } else {
+  //     //   setProfileData(null);
+  //     // }
+  //   } catch (error) {
+  //     console.error(error);
+  //     setProfileData(null);
+  //   }
+  // };
+
+  useFetchProfileData(accountsChanged);
+
   return (
     <div className={show ? styles.container : styles.ncontainer}>
       <div className={styles.subContainer1}>
@@ -197,9 +197,7 @@ const Header = () => {
         </>
       )}
 
-      <div style={{ cursor: "pointer" }} onClick={handleGetProfile}>
-        Get Profile
-      </div>
+      <div style={{ cursor: "pointer" }}>Get Profile</div>
 
       {/* <button
         onClick={() =>
