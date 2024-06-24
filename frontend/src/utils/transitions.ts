@@ -123,7 +123,7 @@ export const ABI = [
     type: "function",
   },
 ];
-export const CONTRACT = "0x1966cc76d20c88EF2C30d12F61ca4509Cc1f228C";
+export const CONTRACT = "0xfa80Be5293e080B34E551ca7edB4d795F9B647e1";
 
 // const { writeContract } = useWriteContract();
 
