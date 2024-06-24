@@ -229,7 +229,7 @@ async function fetchTagAddeds(tags: Variables): Promise<TagAdded[]> {
       throw new Error(JSON.stringify(response.data.errors));
     }
 
-    console.log(response.data);
+    // console.log(response.data);
     return response.data.data.tagAddeds;
   } catch (error) {
     console.error("Error fetching data:", error);
