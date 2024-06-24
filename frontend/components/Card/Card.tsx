@@ -13,8 +13,8 @@ import { CircularProgress } from "@mui/material";
 const WrapperCard = ({ data, address }: { data: any; address: any }) => {
   const constructUrl = (tag: string, appName: string) => {
     const baseUrl =
-      "https://fleek-test.network/services/1/ipfs/bafkreigqlnmvdqnekygi5dgsqbv6ijky5fa3itpu6kdptrutj6xnyt4ipe";
-    const url = `${baseUrl}?profile=${address}&app=${appName}&tag=${tag}`;
+      "https://fleek-test.network/services/1/ipfs/bafkreihstluktgf3akcffuyt2svwqloicq6ircoxucofgbzeqecs676oki";
+    const url = `${baseUrl}?profile=${address}&app=${appName}&tags=${tag}`;
     return url;
   };
 
@@ -24,14 +24,17 @@ const WrapperCard = ({ data, address }: { data: any; address: any }) => {
     setLoading(true);
     setTimeout(async () => {
       if (data && data.tags) {
-        for (let i = 0; i < data.tags.length; i++) {
-          const url = constructUrl(data.tags[i], data.appName);
-          console.log("inside", url);
+        const tagsString = data.tags.join(",");
+        const url = constructUrl(tagsString, data.appName);
+        console.log("inside", url);
 
+        try {
           const response = await fetch(url);
           console.log(response);
-          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching URL:", error);
         }
+        setLoading(false);
       }
     }, 5000);
   };
