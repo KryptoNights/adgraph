@@ -12,7 +12,7 @@ import { useCBWSDK } from "@/context/CBWSDKReactContextProvider";
 import { base } from "viem/chains";
 import { useReadContract, useWriteContract } from "wagmi";
 import "@coinbase/onchainkit/styles.css";
-import { ABI, CONTRACT } from "@/utils/transitions";
+import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
 import { config } from "@/utils/wagmi";
 import { abi } from "./abi";
 import useFetchProfileData from "./FetchProfileData";
@@ -101,7 +101,14 @@ const Header = () => {
     router.push("/create");
   };
 
+  
   React.useEffect(() => {
+    const fetchdata = async (accountsChanged: any) => {
+      console.log("accountsChanged", accountsChanged, typeof accountsChanged);
+      const profile = await get_profile(String(accountsChanged));
+      console.log("getprofile", profile);
+    };
+    fetchdata(accountsChanged);
     console.log("connec", accountsChanged);
   });
   const [profileData, setProfileData]: any = useState(null);

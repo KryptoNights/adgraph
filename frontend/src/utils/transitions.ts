@@ -1,4 +1,5 @@
-import { useWriteContract, useReadContract } from "wagmi";
+import { useWriteContract } from "wagmi";
+import { Contract, ethers, JsonRpcProvider } from "ethers";
 
 export const ABI = [
   {
@@ -124,35 +125,24 @@ export const ABI = [
 ];
 export const CONTRACT = "0x1966cc76d20c88EF2C30d12F61ca4509Cc1f228C";
 
-const { writeContract } = useWriteContract();
+// const { writeContract } = useWriteContract();
 
-export async function get_profile(profile: string) {
-  const apps_response = useReadContract({
-    abi: ABI,
-    address: CONTRACT,
-    functionName: "get_apps",
-    args: [profile],
-  });
+const baseProvider = new JsonRpcProvider(
+    "https://base-sepolia.g.alchemy.com/v2/iuu-FM9fYkPCrqX6OQtAy1GRpxRZHsuR"
+);
 
-  if (!apps_response.error) {
-    const apps = apps_response.data as string[];
+export const get_profile = async (profile: string) => {
+    const adgraph = new Contract(CONTRACT, ABI, baseProvider);
+
+    console.log("get_profile", profile, typeof profile);
+    const apps = await adgraph?.get_apps(profile) as string[];
 
     const map = new Map<string, string[]>();
     for (const app of apps) {
-      const tags_response = useReadContract({
-        abi: ABI,
-        address: CONTRACT,
-        functionName: "get_tags",
-        args: [profile, app],
-      });
-      if (!tags_response.error) {
-        map.set(app, tags_response.data as string[]);
-      }
+        const tags = await adgraph?.get_tags(profile, app) as string[];
+        map.set(app, tags);
     }
     return map;
-  } else {
-    return null;
-  }
 }
 
 // export async function block_app(profile: string, app: string) {
