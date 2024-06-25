@@ -13,7 +13,7 @@ import { base } from "viem/chains";
 import { useReadContract, useWriteContract } from "wagmi";
 import "@coinbase/onchainkit/styles.css";
 import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
-import { config } from "@/utils/wagmi";
+// import { config } from "@/utils/wagmi";
 import { abi } from "./abi";
 import { setWalletInfo } from "@/store/slice/walletinfo";
 const Header = () => {

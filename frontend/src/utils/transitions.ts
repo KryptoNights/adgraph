@@ -164,7 +164,7 @@ export const get_profile = async (profile: string) => {
   const map = new Map<string, string[]>();
   for (const app of apps) {
     const tags = await adgraph?.get_tags(profile, app) as string[];
-    map.set(app, tags);
+    map.set(app, tags.filter((tag) => tag !== ""));
   }
   return map;
 };
