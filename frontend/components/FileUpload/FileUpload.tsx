@@ -24,6 +24,7 @@ const getRandomColor = (colors: string[]) => {
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [file, setFile] = useState<any>(null);
+
   const [tags, setTags] = useState<string[]>([]);
   const [profileTagMap, setProfileTagMap] = useState(new Map());
   const [tagColors, setTagColors] = useState<{ [key: string]: string }>({});

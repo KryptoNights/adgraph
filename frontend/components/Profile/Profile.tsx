@@ -23,6 +23,7 @@ const ProfileList = () => {
   const { writeContract } = useWriteContract();
   const [loading, setLoading] = React.useState(false);
   const [tags, setTagsData]: any = React.useState([]);
+  const [mapOfTag, setMapOfTag]: any = React.useState({});
   const [appName, setAppName]: any = React.useState([]);
   const [accountsChanged, setAccountsChanged]: any = React.useState(null);
   React.useEffect(() => {
@@ -41,6 +42,7 @@ const ProfileList = () => {
       console.log("accountsChanged", accountsChanged, typeof accountsChanged);
       const profile = await get_profile(String(accountsChanged));
       console.log("getprofile", profile);
+      setMapOfTag(profile);
       let arr: any[] = [];
       let arr2: any[] = [];
       profile.forEach((key: any, value: any) => {
@@ -125,6 +127,9 @@ const ProfileList = () => {
                   );
                 })}
             </div>
+          </div>
+          <div>
+            <DisplayGraph appNames={appName} Tags={tags} />
           </div>
         </div>
       )}
