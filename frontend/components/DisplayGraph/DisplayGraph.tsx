@@ -25,7 +25,7 @@ export const LoadGraph: React.FC = () => {
 
 export const DisplayGraph: React.FC = () => {
   return (
-    <SigmaContainer >
+    <SigmaContainer>
       <LoadGraph />
     </SigmaContainer>
   );

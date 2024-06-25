@@ -1,8 +1,8 @@
 .profileList {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  width: 80%;
   gap: 20px;
-  background-color: #786c6c;
+  background-color: black;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,11 +44,16 @@
 }
 
 .tag {
-  padding: 5px 10px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
   background-color: #e0e0e0;
-  color: black;
-  font-size: 0.9em;
+  color: rgb(0, 0, 0);
+  font-size: 1em;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -64,4 +69,11 @@
   width: 100%;
   flex-direction: column;
   gap: 80px;
+}
+
+.roww {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #9e9999;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
