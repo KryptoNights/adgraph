@@ -185,34 +185,38 @@ const FileUpload = () => {
           </div>
         )}
       </div>
-
-      <div className={styles.secondBox}>
-        <div>
-          <span>Tags for Images</span>
-          <div className={styles.tagsDiv}>
-            <Stack direction="row" spacing={1} className={styles.chipContainer}>
-              {tags.map((tag, index) => (
-                <span
-                  key={tag}
-                  className={styles.tag}
-                  style={{
-                    backgroundColor: getRandomColor(predefinedColors),
-                    marginBottom: "5px",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </Stack>
+      {tags.length !== 0 ? (
+        <div className={styles.secondBox}>
+          <div>
+            <span>Tags for Images</span>
+            <div className={styles.tagsDiv}>
+              <Stack
+                direction="row"
+                spacing={1}
+                className={styles.chipContainer}
+              >
+                {tags.map((tag, index) => (
+                  <span
+                    key={tag}
+                    className={styles.tag}
+                    style={{
+                      backgroundColor: getRandomColor(predefinedColors),
+                      marginBottom: "5px",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </Stack>
+            </div>
           </div>
-        </div>
-        <div
-          style={{
-            marginTop: "7px",
-          }}
-        >
-          <span>Addresses</span>
-          {/* <Stack
+          <div
+            style={{
+              marginTop: "7px",
+            }}
+          >
+            <span>Addresses</span>
+            {/* <Stack
             direction="row"
             spacing={1}
             className={styles.addressContainer}
@@ -237,9 +241,12 @@ const FileUpload = () => {
                 </div>
               )
             )}
-          {/* </Stack> */}
+            {/* </Stack> */}
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
