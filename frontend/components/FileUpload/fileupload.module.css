@@ -67,3 +67,20 @@
   color: black;
   font-size: 0.9em;
 }
+
+.address {
+  color: #000;
+}
+
+.addressContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.innerdiv {
+  padding: 10px;
+  background-color: #866d72;
+  display: flex;
+  margin: 3px;
+  justify-content: space-between;
+}
