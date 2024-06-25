@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./profile.module.css";
-import { color } from "framer-motion";
 import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
 import { useWriteContract } from "wagmi";
+import {DisplayGraph} from "../DisplayGraph/DisplayGraph"
 
 const tagColors: any = {
   0: "#d1c4e9",
@@ -57,6 +57,7 @@ const ProfileList = () => {
     <div className={styles.profileList}>
       <div className={styles.wrapper}>
         <div className={styles.box1}>
+          {/* <DisplayGraph /> */}
           {appName &&
             appName.map((item: any, indexMain: number) => {
               return (

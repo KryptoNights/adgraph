@@ -4,6 +4,7 @@ import { get_wallets_and_tags_for_image } from "@/utils/transitions";
 import { convertImgToBase64 } from "@/utils/base";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import { Name } from "@coinbase/onchainkit/identity";
 
 // Predefined set of colors
 const predefinedColors = [
@@ -191,15 +192,6 @@ const FileUpload = () => {
           <div className={styles.tagsDiv}>
             <Stack direction="row" spacing={1} className={styles.chipContainer}>
               {tags.map((tag, index) => (
-                // <Chip
-                //   key={index}
-                //   label={tag}
-                //   style={{
-                //     color: "black",
-                //     backgroundColor: tagColors[tag],
-                //     marginBottom: "8px",
-                //   }}
-                // />
                 <span
                   key={tag}
                   className={styles.tag}
@@ -220,11 +212,15 @@ const FileUpload = () => {
           }}
         >
           <span>Addresses</span>
-          <Stack direction="row" spacing={1} className={styles.chipContainer}>
+          {/* <Stack
+            direction="row"
+            spacing={1}
+            className={styles.addressContainer}
+          > */}
             {Array.from(profileTagMap.entries()).map(
               ([address, tags], index) => (
-                <div key={index}>
-                  <div>{address}</div>
+                <div key={index} className={styles.innerdiv}>
+                  <Name address={address} showAddress />
                   <div>
                     {tags.map((tag: string, tagIndex: number) => (
                       <span
@@ -241,7 +237,7 @@ const FileUpload = () => {
                 </div>
               )
             )}
-          </Stack>
+          {/* </Stack> */}
         </div>
       </div>
     </div>
