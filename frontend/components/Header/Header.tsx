@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./header.module.css";
 import { Button, CircularProgress } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../src/store/index";
 import Image from "next/image";
 import AdGraphLogo from "public/AdGraphLogo.png";
 import { Avatar, Name } from "@coinbase/onchainkit/identity";
-import { OnchainKitProvider } from "@coinbase/onchainkit";
 import { useRouter } from "next/router";
 import { useCBWSDK } from "@/context/CBWSDKReactContextProvider";
-import { base } from "viem/chains";
-import { useReadContract, useWriteContract } from "wagmi";
 import "@coinbase/onchainkit/styles.css";
-import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
-// import { config } from "@/utils/wagmi";
-import { abi } from "./abi";
 import { setWalletInfo } from "@/store/slice/walletinfo";
+import { useAccount, useDisconnect } from "wagmi";
 const Header = () => {
+  const { address, status } = useAccount();
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -89,6 +83,10 @@ const Header = () => {
     router.push("/");
   };
 
+  React.useEffect(() => {
+    console.log("add", address);
+  });
+
   return (
     <div className={show ? styles.container : styles.ncontainer}>
       <div className={styles.subContainer1}>
@@ -112,7 +110,10 @@ const Header = () => {
               className="flex h-10 items-center space-x-4"
               onClick={handleDisconnect}
             >
-              <Avatar address={accountsChanged} showAttestation />
+              <Avatar
+                address="0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9"
+                showAttestation
+              />
               <div className="flex flex-col text-sm">
                 <b>
                   <Name address={accountsChanged} />
