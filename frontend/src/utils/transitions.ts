@@ -305,10 +305,12 @@ export async function get_wallets_and_tags_for_image(
   // console.log("tagAddeds");
   // console.log(tagAddeds);
 
-  const profile_tag_map = new Map<string, string>();
+  const profile_tag_map = new Map<string, string[]>();
   for (const tagAdded of tagAddeds) {
     if (!profile_tag_map.has(tagAdded.profile)) {
-      profile_tag_map.set(tagAdded.profile, tagAdded.tag);
+      profile_tag_map.set(tagAdded.profile, [tagAdded.tag]);
+    } else {
+      profile_tag_map.get(tagAdded.profile)?.push(tagAdded.tag);
     }
   }
 
