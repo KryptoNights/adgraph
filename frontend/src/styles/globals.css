@@ -184,3 +184,140 @@ a:hover {
 .file-atc-box:last-child {
   margin-bottom: 0;
 }
+.product-page {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.product-gallery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image {
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail-images img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.product-info {
+  flex: 2;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.product-rating {
+  font-size: 1rem;
+  color: #ffa500;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #b12704;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.product-specifications {
+  list-style: none;
+  color: black;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.product-specifications li {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.buy-button,
+.like-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.buy-button {
+  background-color: #ff9900;
+  color: rgb(17, 17, 17);
+}
+
+.like-button {
+  background-color: #0073e6;
+  color: white;
+}
+
+.like-button.liked {
+  background-color: #ff4500;
+}
+
+.product-reviews {
+  margin-top: 40px;
+  width: 100%;
+  color: black;
+}
+
+.product-reviews h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.review {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-top: 20px;
+  color: black;
+}
+
+.review h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.review-rating {
+  color: #ffa500;
+  margin-bottom: 10px;
+}
