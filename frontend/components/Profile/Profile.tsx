@@ -2,10 +2,17 @@ import React from "react";
 import styles from "./profile.module.css";
 import { ABI, CONTRACT, get_profile } from "@/utils/transitions";
 import { useWriteContract } from "wagmi";
-import { DisplayGraph } from "../DisplayGraph/DisplayGraph";
+// import { DisplayGraph } from "../DisplayGraph/DisplayGraph";
 import Loading from "public/giphy.webp";
 import Cross from "public/Cross.png";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const DisplayGraph = dynamic(
+  () => import("../DisplayGraph/DisplayGraph").then((mod) => mod.DisplayGraph),
+  { ssr: false }
+);
+
 const tagColors: any = {
   0: "#d1c4e9",
   1: "#b2fab4",

@@ -46,7 +46,7 @@
     "redux-persist": "^6.0.0",
     "typescript": "5.1.6",
     "viem": "^2.16.2",
-    "wagmi": "^2.10.5"
+    "wagmi": "^2.10.7"
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",
