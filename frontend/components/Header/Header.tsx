@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./header.module.css";
 import { Button, CircularProgress } from "@mui/material";
 import Image from "next/image";
-import AdGraphLogo from "public/AdGraphLogo.png";
+import AdGraphLogo from "public/Logo.jpeg";
 import { Avatar, Name } from "@coinbase/onchainkit/identity";
 import { useRouter } from "next/router";
 import { useCBWSDK } from "@/context/CBWSDKReactContextProvider";
@@ -82,6 +82,9 @@ const Header = () => {
   const handleRedirect = () => {
     router.push("/");
   };
+  const handleRedirect2 = () => {
+    router.push("/advertise");
+  };
 
   React.useEffect(() => {
     console.log("add", address);
@@ -92,47 +95,53 @@ const Header = () => {
       <div className={styles.subContainer1}>
         <Image
           src={AdGraphLogo}
-          alt={"BuildFi"}
-          width={180}
-          height={40}
+          alt={"AdGraph"}
+          width={60}
+          height={60}
           onClick={handleRedirect}
           className="cursor-pointer"
           style={{ filter: "invert(0)", borderRadius: "8px" }}
         />
+        <div className={styles.header}>AdGraph</div>
       </div>
-
-      {loading ? (
-        <CircularProgress />
-      ) : connected ? (
-        <>
-          {accountsChanged && accountsChanged[0] && (
-            <div
-              className="flex h-10 items-center space-x-4"
-              onClick={handleDisconnect}
-            >
-              <Avatar
-                address="0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9"
-                showAttestation
-              />
-              <div className="flex flex-col text-sm">
-                <b>
-                  <Name address={accountsChanged} />
-                </b>
-                <Name address={accountsChanged} showAddress />
+      <div className={styles.boxwrap}>
+        {loading ? (
+          <CircularProgress />
+        ) : connected ? (
+          <>
+            {accountsChanged && accountsChanged[0] && (
+              <div
+                className="flex h-10 items-center space-x-4"
+                onClick={handleDisconnect}
+              >
+                <Avatar
+                  address="0x838aD0EAE54F99F1926dA7C3b6bFbF617389B4D9"
+                  showAttestation
+                />
+                <div className="flex flex-col text-sm">
+                  <b>
+                    <Name address={accountsChanged} />
+                  </b>
+                  <Name address={accountsChanged} showAddress />
+                </div>
               </div>
-            </div>
-          )}
-        </>
-      ) : (
-        <>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleConnect}
-          >
-            Connect
-          </button>
-        </>
-      )}
+            )}
+          </>
+        ) : (
+          <>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleConnect}
+            >
+              Connect
+            </button>
+          </>
+        )}
+
+        <button className={`like-button`} onClick={handleRedirect2}>
+          Advertise
+        </button>
+      </div>
     </div>
   );
 };

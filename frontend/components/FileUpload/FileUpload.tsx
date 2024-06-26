@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import styles from "./fileupload.module.css";
 import { get_wallets_and_tags_for_image } from "@/utils/transitions";
 import { convertImgToBase64 } from "@/utils/base";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
+
+import Image from "next/image";
+import Shop1 from "public/shop1.jpg";
+import Shop2 from "public/shop2.jpg";
+
 import { Name } from "@coinbase/onchainkit/identity";
+import { useRouter } from "next/router";
 
-// Predefined set of colors
-const predefinedColors = [
-  "#d1c4e9",
-  "#b2fab4",
-  "#ffcc80",
-  "#ffab91",
-  "#ffe082",
-  "#b3e5fc",
-];
-
-// Function to get a random color from the predefined set
-const getRandomColor = (colors: string[]) => {
-  return colors[Math.floor(Math.random() * colors.length)];
+const tagColors: any = {
+  0: "#d1c4e9",
+  1: "#b2fab4",
+  2: "#ffcc80",
+  3: "#ffab91",
+  4: "#ffe082",
+  5: "#b3e5fc",
 };
 
+const getRandomColor = (index: number) => {
+  return tagColors[index % 6];
+};
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [file, setFile] = useState<any>(null);
@@ -74,8 +75,8 @@ const FileUpload = () => {
 
         // Assign random colors to tags
         const colors: { [key: string]: string } = {};
-        tags.forEach((tag: any) => {
-          colors[tag] = getRandomColor(predefinedColors);
+        tags.forEach((tag: any, index: number) => {
+          colors[tag] = getRandomColor(Number(index));
         });
         console.log(tags);
         console.log(profile_tag_map);
@@ -97,32 +98,82 @@ const FileUpload = () => {
     }
   };
 
-  return (
-    <div className={styles.fileuploadview}>
-      <div className={styles.firstBox}>
-        <div className={styles.txt1}>Single File Upload With Preview</div>
+  const router = useRouter();
+  const handleRedirect = () => {
+    router.push("/sample");
+  };
+  const handleRedirect2 = () => {
+    router.push("/shop");
+  };
 
-        <form onSubmit={FileUploadSubmit}>
-          <div className="kb-file-upload">
-            <div className="file-upload-box">
-              <input
-                type="file"
-                id="fileupload"
-                className="file-upload-input"
-                onChange={InputChange}
-              />
-              <span className={styles.txt2}>
-                Drag and drop or{" "}
-                <span className="file-link">Choose your file</span>
-              </span>
+  return (
+    <>
+      <div className={styles.fileuploadview}>
+        <div className={styles.firstBox}>
+          <div className={styles.txt1}>Single File Upload With Preview</div>
+
+          <form onSubmit={FileUploadSubmit}>
+            <div className="kb-file-upload">
+              <div className="file-upload-box">
+                <input
+                  type="file"
+                  id="fileupload"
+                  className="file-upload-input"
+                  onChange={InputChange}
+                />
+                <span className={styles.txt2}>
+                  Drag and drop or{" "}
+                  <span className="file-link">Choose your file</span>
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="kb-attach-box mb-3">
-            {selectedFile && (
-              <div className="file-atc-box" key={selectedFile.id}>
-                {selectedFile.filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ? (
+            <div className="kb-attach-box mb-3">
+              {selectedFile && (
+                <div className="file-atc-box" key={selectedFile.id}>
+                  {selectedFile.filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ? (
+                    <div className="file-image">
+                      <img src={selectedFile.fileimage} alt="" />
+                    </div>
+                  ) : (
+                    <div className="file-image">
+                      <i className="far fa-file-alt"></i>
+                    </div>
+                  )}
+                  <div className={styles.txt3}>
+                    {selectedFile.filename}
+                    <p>
+                      <span className={styles.txt3}>
+                        Size : {selectedFile.filesize}
+                      </span>
+                      <span className="ml-2">
+                        Modified Time : {selectedFile.datetime}
+                      </span>
+                    </p>
+
+                    <button
+                      type="button"
+                      className="file-action-btn"
+                      onClick={DeleteSelectedFile}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="kb-buttons-box">
+              <button type="submit" className="btn btn-primary form-submit">
+                Upload
+              </button>
+            </div>
+          </form>
+          {file && (
+            <div className={styles.box}>
+              <hr />
+              <div className={styles.box2}>
+                {file.filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ? (
                   <div className="file-image">
-                    <img src={selectedFile.fileimage} alt="" />
+                    <img src={file.fileimage} alt="" />
                   </div>
                 ) : (
                   <div className="file-image">
@@ -130,125 +181,112 @@ const FileUpload = () => {
                   </div>
                 )}
                 <div className={styles.txt3}>
-                  {selectedFile.filename}
+                  {file.filename}
                   <p>
-                    <span className={styles.txt3}>
-                      Size : {selectedFile.filesize}
-                    </span>
-                    <span className="ml-2">
-                      Modified Time : {selectedFile.datetime}
+                    <span>Size : {file.filesize}</span>
+                    <span className="ml-3">
+                      Modified Time : {file.datetime}
                     </span>
                   </p>
-
-                  <button
-                    type="button"
-                    className="file-action-btn"
-                    onClick={DeleteSelectedFile}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="kb-buttons-box">
-            <button type="submit" className="btn btn-primary form-submit">
-              Upload
-            </button>
-          </div>
-        </form>
-        {file && (
-          <div className={styles.box}>
-            <hr />
-            <div className={styles.box2}>
-              {file.filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ? (
-                <div className="file-image">
-                  <img src={file.fileimage} alt="" />
-                </div>
-              ) : (
-                <div className="file-image">
-                  <i className="far fa-file-alt"></i>
-                </div>
-              )}
-              <div className={styles.txt3}>
-                {file.filename}
-                <p>
-                  <span>Size : {file.filesize}</span>
-                  <span className="ml-3">Modified Time : {file.datetime}</span>
-                </p>
-                <div className="file-actions">
-                  <button className="file-action-btn" onClick={DeleteFile}>
-                    Delete
-                  </button>
+                  <div className="file-actions">
+                    <button className="file-action-btn" onClick={DeleteFile}>
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-      {tags.length !== 0 ? (
-        <div className={styles.secondBox}>
-          <div>
-            <span>Tags for Images</span>
-            <div className={styles.tagsDiv}>
-              <Stack
-                direction="row"
-                spacing={1}
-                className={styles.chipContainer}
-              >
+          )}
+        </div>
+        {tags.length !== 0 ? (
+          <div className={styles.secondBox}>
+            <div>
+              <span className={styles.txt1}>Tags for Images</span>
+              <div className={styles.tagsDiv}>
                 {tags.map((tag, index) => (
                   <span
-                    key={tag}
+                    key={index}
                     className={styles.tag}
                     style={{
-                      backgroundColor: getRandomColor(predefinedColors),
-                      marginBottom: "5px",
+                      backgroundColor: getRandomColor(Number(index)),
                     }}
                   >
                     {tag}
+
+                    {/* <Image src={Cross} width={15} height={15} alt={"cross"} /> */}
                   </span>
                 ))}
-              </Stack>
+              </div>
+            </div>
+            <div
+              style={{
+                marginTop: "28px",
+                marginBottom: "20px",
+              }}
+            >
+              <span className={styles.txt1}>Profiles Addresses</span>
+              {Array.from(profileTagMap.entries()).map(
+                ([address, tags], index) => (
+                  <div key={index} className={styles.innerdiv}>
+                    <Name address={address} showAddress />
+                    <div className={styles.flex}>
+                      {tags.map((tag: string, tagIndex: number) => (
+                        <span
+                          key={tagIndex}
+                          className={styles.tag}
+                          style={{
+                            backgroundColor: getRandomColor(Number(index)),
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              )}
+              {/* </Stack> */}
             </div>
           </div>
-          <div
-            style={{
-              marginTop: "7px",
-            }}
+        ) : (
+          ""
+        )}
+      </div>
+
+      <div className={styles.subBox}>
+        <div className={styles.miniBox}>
+          <Image
+            src={Shop1}
+            width={500}
+            height={500}
+            alt={"shop1"}
+            style={{ borderRadius: "8px" }}
+          />
+
+          <button
+            className="btn btn-primary form-submit"
+            onClick={handleRedirect}
           >
-            <span>Addresses</span>
-            {/* <Stack
-            direction="row"
-            spacing={1}
-            className={styles.addressContainer}
-          > */}
-            {Array.from(profileTagMap.entries()).map(
-              ([address, tags], index) => (
-                <div key={index} className={styles.innerdiv}>
-                  <Name address={address} showAddress />
-                  <div>
-                    {tags.map((tag: string, tagIndex: number) => (
-                      <span
-                        key={tagIndex}
-                        className={styles.tag}
-                        style={{
-                          backgroundColor: getRandomColor(predefinedColors),
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )
-            )}
-            {/* </Stack> */}
-          </div>
+            Sample Shop 1
+          </button>
         </div>
-      ) : (
-        ""
-      )}
-    </div>
+        <div className={styles.miniBox}>
+          <Image
+            src={Shop1}
+            width={500}
+            height={500}
+            alt={"shop1"}
+            style={{ borderRadius: "8px" }}
+          />
+          <button
+            className="btn btn-primary form-submit"
+            onClick={handleRedirect2}
+          >
+            Sample Shop 2{" "}
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

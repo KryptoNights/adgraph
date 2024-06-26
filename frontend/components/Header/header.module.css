@@ -18,7 +18,7 @@
   display: flex;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background-color: rgba(13,17,23,0);
+  background-color: rgba(13, 17, 23, 0);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -35,11 +35,21 @@
 }
 
 .subContainer1 {
+  margin-top: 12px;
   display: flex;
   flex-direction: row;
   gap: 20px;
   color: white;
   align-items: center;
+  cursor: pointer;
+}
+
+.header {
+  padding-top: 12px;
+  font-family: fantasy;
+  font-size: 3em;
+  text-align: center;
+  cursor: pointer;
 }
 
 .txt1 {
@@ -51,4 +61,11 @@
   font-size: 16px;
   cursor: pointer;
   font-size: 600;
+}
+
+.boxwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
 }

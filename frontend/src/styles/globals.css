@@ -329,11 +329,13 @@ a:hover {
 }
 
 .app-name {
+  font-size: 2em;
   margin-bottom: 20px;
 }
 
 .app-name label {
-  margin-right: 10px;
+  font-size: 2em;
+  margin-right: 20px;
 }
 
 .chips-section {
@@ -345,7 +347,7 @@ a:hover {
   flex-wrap: wrap;
   border: 1px solid #ccc;
   padding: 5px;
-  color: black;
+  color: rgb(255, 255, 255);
   border-radius: 5px;
 }
 
