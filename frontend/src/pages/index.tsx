@@ -1,23 +1,15 @@
-import React from "react";
-import useDetectDevice from "../../customhook/useDetectDevice";
-import { useRouter } from "next/router";
-import ProfileList from "../../components/Profile/Profile";
+import Features from "../../components/features";
+import Hero from "../../components/hero";
+import Newsletter from "../../components/newsletter";
+import Testimonials from "../../components/testinomical";
+import Zigzag from "../../components/zigzag";
 
-const index: React.FC = () => {
-  const res = useDetectDevice();
-  const router = useRouter();
-
-  const styles = {
-    container: {
-      height: "100%",
-    },
-  };
-
+export default function Home() {
   return (
-    <div style={styles.container}>
-      <ProfileList />
-    </div>
+    <>
+      <Hero />
+      <Zigzag />
+      <Features />
+    </>
   );
-};
-
-export default index;
+}
