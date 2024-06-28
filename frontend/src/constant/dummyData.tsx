@@ -78,7 +78,7 @@ export const dummyData1 = [
       "https://cdn.britannica.com/30/94530-050-99493FEA/Machu-Picchu.jpg",
     imgSrcSet:
       "https://cdn.britannica.com/30/94530-050-99493FEA/Machu-Picchu.jpg 2x",
-    appName: "Travel Central",
+    appName: "En Route",
     alt: "Machu Picchu",
     title: "Machu Picchu",
     location: "Peru",
@@ -104,7 +104,7 @@ export const dummyData1 = [
       "https://www.travelandleisure.com/thmb/SPUPzO88ZXq6P4Sm4mC5Xuinoik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg",
     imgSrcSet:
       "https://www.travelandleisure.com/thmb/SPUPzO88ZXq6P4Sm4mC5Xuinoik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg 2x",
-    appName: "Travel Central",
+    appName: "En Route",
     alt: "Eiffel Tower",
     title: "Eiffel Tower",
     location: "France",
@@ -130,7 +130,7 @@ export const dummyData1 = [
       "https://www.worldatlas.com/r/w1200/upload/da/ec/40/shutterstock-363803066.jpg",
     imgSrcSet:
       "https://www.worldatlas.com/r/w1200/upload/da/ec/40/shutterstock-363803066.jpg 2x",
-    appName: "Travel Central",
+    appName: "En Route",
     alt: "Great Wall of China",
     title: "Great Wall of China",
     location: "China",
@@ -293,7 +293,7 @@ export const dummyData2 = [
   {
     "imgSrc": "https://contentstatic.techgig.com/photo/106927668/best-gaming-laptops-to-consider-in-2024.jpg?989012",
     "imgSrcSet": "https://contentstatic.techgig.com/photo/106927668/best-gaming-laptops-to-consider-in-2024.jpg?989012 2x",
-    "appName": "Shop3",
+    "appName": "Shoppily",
     "alt": "Gaming Laptops",
     "title": "Gaming Laptops",
     "location": "Online",
@@ -315,7 +315,7 @@ export const dummyData2 = [
   {
     "imgSrc": "https://assets.architecturaldigest.in/photos/60084d6feebcfd50ede87d35/master/w_1600%2Cc_limit/best-smart-TVs-in-india-mi-tv-4x-1.jpg",
     "imgSrcSet": "https://assets.architecturaldigest.in/photos/60084d6feebcfd50ede87d35/master/w_1600%2Cc_limit/best-smart-TVs-in-india-mi-tv-4x-1.jpg 2x",
-    "appName": "Shop3",
+    "appName": "Shoppily",
     "alt": "Smart TVs",
     "title": "Smart TVs",
     "location": "Online",
@@ -337,7 +337,7 @@ export const dummyData2 = [
   {
     "imgSrc": "https://www.telegraph.co.uk/content/dam/recommended/2022/10/11/TELEMMGLPICT000312343049_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg?imwidth=680",
     "imgSrcSet": "https://www.telegraph.co.uk/content/dam/recommended/2022/10/11/TELEMMGLPICT000312343049_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg?imwidth=680 2x",
-    "appName": "Shop3",
+    "appName": "Shoppily",
     "alt": "Bluetooth Speakers",
     "title": "Bluetooth Speakers",
     "location": "Online",
