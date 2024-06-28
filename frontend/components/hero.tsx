@@ -47,9 +47,10 @@ export default function Hero() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              AdGraph: An open, decentralized on-chain graph of user
-              preferences.
+              Open, decentralized on-chain graph of user
+              preferences
             </h1>
+            <br />
             <p
               className="text-xl text-gray-400 mb-8"
               data-aos="fade-up"
@@ -57,7 +58,7 @@ export default function Hero() {
             >
               As social and commerce shift onchain, wallets become identities.
               AdGraph builds onchain profiles of wallet addresses, capturing
-              likes and preferences across all web3 apps
+              likes and preferences across all web3 apps they use
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
