@@ -1,10 +1,10 @@
-export const dummyData = [
+export const dummyData1 = [
   {
     imgSrc:
       "https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318",
     imgSrcSet:
       "https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "Places",
+    appName: "Travel Central",
     alt: "Yosemite National Park",
     title: "Yosemite National Park",
     location: "California",
@@ -25,10 +25,10 @@ export const dummyData = [
   },
   {
     imgSrc:
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=318",
+      "https://npf-prod.imgix.net/uploads/shutterstock_97706066_1.jpg",
     imgSrcSet:
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "flipkart",
+      "https://npf-prod.imgix.net/uploads/shutterstock_97706066_1.jpg 2x",
+    appName: "Travel Central",
     alt: "Grand Canyon",
     title: "Grand Canyon",
     location: "Arizona",
@@ -49,10 +49,10 @@ export const dummyData = [
   },
   {
     imgSrc:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=318",
+      "https://cdn.britannica.com/47/80547-120-839DEBE4/Field-green-tea-Mount-Fuji-Shizuoka-prefecture.jpg",
     imgSrcSet:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "amazon",
+      "https://cdn.britannica.com/47/80547-120-839DEBE4/Field-green-tea-Mount-Fuji-Shizuoka-prefecture.jpg 2x",
+    appName: "Travel Central",
     alt: "Mount Fuji",
     title: "Mount Fuji",
     location: "Japan",
@@ -61,7 +61,7 @@ export const dummyData = [
     tags: [
       "mountain",
       "volcano",
-      "Japan",
+      "japan",
       "scenery",
       "nature",
       "snow",
@@ -69,14 +69,16 @@ export const dummyData = [
       "travel",
       "hiking",
       "landmark",
+      "adventure",
+      "landscape"
     ],
   },
   {
     imgSrc:
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=318",
+      "https://cdn.britannica.com/30/94530-050-99493FEA/Machu-Picchu.jpg",
     imgSrcSet:
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "degen",
+      "https://cdn.britannica.com/30/94530-050-99493FEA/Machu-Picchu.jpg 2x",
+    appName: "Travel Central",
     alt: "Machu Picchu",
     title: "Machu Picchu",
     location: "Peru",
@@ -85,22 +87,24 @@ export const dummyData = [
     tags: [
       "ancient",
       "ruins",
-      "Peru",
-      "Inca",
+      "peru",
+      "inca",
       "mountains",
       "history",
       "landmark",
       "scenery",
       "hiking",
       "adventure",
+      "travel",
+      "landscape"
     ],
   },
   {
     imgSrc:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=318",
+      "https://www.travelandleisure.com/thmb/SPUPzO88ZXq6P4Sm4mC5Xuinoik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg",
     imgSrcSet:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "akki",
+      "https://www.travelandleisure.com/thmb/SPUPzO88ZXq6P4Sm4mC5Xuinoik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg 2x",
+    appName: "Travel Central",
     alt: "Eiffel Tower",
     title: "Eiffel Tower",
     location: "France",
@@ -108,8 +112,8 @@ export const dummyData = [
     time: "5 hours ago",
     tags: [
       "landmark",
-      "Paris",
-      "France",
+      "paris",
+      "france",
       "tower",
       "cityscape",
       "architecture",
@@ -117,14 +121,16 @@ export const dummyData = [
       "views",
       "iconic",
       "tourism",
+      "fashion",
+      "europe"
     ],
   },
   {
     imgSrc:
-      "https://images.unsplash.com/photo-1532614338840-ab30cf10ed36?auto=format&fit=crop&w=318",
+      "https://www.worldatlas.com/r/w1200/upload/da/ec/40/shutterstock-363803066.jpg",
     imgSrcSet:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "deb",
+      "https://www.worldatlas.com/r/w1200/upload/da/ec/40/shutterstock-363803066.jpg 2x",
+    appName: "Travel Central",
     alt: "Great Wall of China",
     title: "Great Wall of China",
     location: "China",
@@ -132,7 +138,7 @@ export const dummyData = [
     time: "6 hours ago",
     tags: [
       "landmark",
-      "China",
+      "china",
       "wall",
       "ancient",
       "history",
@@ -143,220 +149,211 @@ export const dummyData = [
       "hiking",
     ],
   },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "kavish",
-    alt: "Colosseum",
-    title: "Colosseum",
-    location: "Italy",
-    views: "5.7k views",
-    time: "7 hours ago",
-    tags: [
-      "landmark",
-      "Rome",
-      "Italy",
-      "ancient",
-      "architecture",
-      "history",
-      "arena",
-      "travel",
-      "tourism",
-      "views",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "kavish",
-    alt: "Statue of Liberty",
-    title: "Statue of Liberty",
-    location: "USA",
-    views: "10.1k views",
-    time: "8 hours ago",
-    tags: [
-      "landmark",
-      "USA",
-      "New York",
-      "statue",
-      "freedom",
-      "iconic",
-      "travel",
-      "views",
-      "tourism",
-      "architecture",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "degen",
-    alt: "Sydney Opera House",
-    title: "Sydney Opera House",
-    location: "Australia",
-    views: "7.9k views",
-    time: "9 hours ago",
-    tags: [
-      "landmark",
-      "Australia",
-      "Sydney",
-      "architecture",
-      "opera",
-      "views",
-      "tourism",
-      "iconic",
-      "harbor",
-      "travel",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1481391609890-331b6ff365ba?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "degen",
-    alt: "Christ the Redeemer",
-    title: "Christ the Redeemer",
-    location: "Brazil",
-    views: "6.8k views",
-    time: "10 hours ago",
-    tags: [
-      "landmark",
-      "Brazil",
-      "Rio de Janeiro",
-      "statue",
-      "views",
-      "iconic",
-      "tourism",
-      "travel",
-      "architecture",
-      "mountain",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1546534857-505b6d1af7d9?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "deb",
-    alt: "Pyramids of Giza",
-    title: "Pyramids of Giza",
-    location: "Egypt",
-    views: "9.3k views",
-    time: "11 hours ago",
-    tags: [
-      "landmark",
-      "Egypt",
-      "pyramids",
-      "ancient",
-      "history",
-      "architecture",
-      "views",
-      "tourism",
-      "travel",
-      "desert",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1531306152480-58b29fae78e9?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "google",
-    alt: "Santorini",
-    title: "Santorini",
-    location: "Greece",
-    views: "8.7k views",
-    time: "12 hours ago",
-    tags: [
-      "island",
-      "Greece",
-      "Santorini",
-      "views",
-      "sunset",
-      "architecture",
-      "tourism",
-      "travel",
-      "Mediterranean",
-      "scenery",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1561484936-f1e8141635b4?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "google",
-    alt: "Petra",
-    title: "Petra",
-    location: "Jordan",
-    views: "5.9k views",
-    time: "13 hours ago",
-    tags: [
-      "ancient",
-      "Jordan",
-      "Petra",
-      "history",
-      "architecture",
-      "ruins",
-      "landmark",
-      "travel",
-      "tourism",
-      "desert",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "google",
-    alt: "Stonehenge",
-    title: "Stonehenge",
-    location: "England",
-    views: "4.5k views",
-    time: "14 hours ago",
-    tags: [
-      "landmark",
-      "England",
-      "Stonehenge",
-      "ancient",
-      "history",
-      "mystery",
-      "architecture",
-      "tourism",
-      "views",
-      "travel",
-    ],
-  },
-  {
-    imgSrc:
-      "https://images.unsplash.com/photo-1542261750-ecf1d03683c5?auto=format&fit=crop&w=318",
-    imgSrcSet:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=318&dpr=2 2x",
-    appName: "amazon",
-    alt: "Taj Mahal",
-    title: "Taj Mahal",
-    location: "India",
-    views: "11.2k views",
-    time: "15 hours ago",
-    tags: [
-      "landmark",
-      "India",
-      "Taj Mahal",
-      "architecture",
-      "history",
-      "marble",
-      "views",
-      "tourism",
-      "travel",
-      "iconic",
-    ],
-  },
+  // {
+  //   imgSrc:
+  //     "https://images.unsplash.com/photo-1561484936-f1e8141635b4?auto=format&fit=crop&w=318",
+  //   imgSrcSet:
+  //     "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=318&dpr=2 2x",
+  //   appName: "google",
+  //   alt: "Petra",
+  //   title: "Petra",
+  //   location: "Jordan",
+  //   views: "5.9k views",
+  //   time: "13 hours ago",
+  //   tags: [
+  //     "ancient",
+  //     "Jordan",
+  //     "Petra",
+  //     "history",
+  //     "architecture",
+  //     "ruins",
+  //     "landmark",
+  //     "travel",
+  //     "tourism",
+  //     "desert",
+  //   ],
+  // },
+  // {
+  //   imgSrc:
+  //     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318",
+  //   imgSrcSet:
+  //     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=318&dpr=2 2x",
+  //   appName: "google",
+  //   alt: "Stonehenge",
+  //   title: "Stonehenge",
+  //   location: "England",
+  //   views: "4.5k views",
+  //   time: "14 hours ago",
+  //   tags: [
+  //     "landmark",
+  //     "England",
+  //     "Stonehenge",
+  //     "ancient",
+  //     "history",
+  //     "mystery",
+  //     "architecture",
+  //     "tourism",
+  //     "views",
+  //     "travel",
+  //   ],
+  // },
+  // {
+  //   imgSrc:
+  //     "https://images.unsplash.com/photo-1542261750-ecf1d03683c5?auto=format&fit=crop&w=318",
+  //   imgSrcSet:
+  //     "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=318&dpr=2 2x",
+  //   appName: "amazon",
+  //   alt: "Taj Mahal",
+  //   title: "Taj Mahal",
+  //   location: "India",
+  //   views: "11.2k views",
+  //   time: "15 hours ago",
+  //   tags: [
+  //     "landmark",
+  //     "India",
+  //     "Taj Mahal",
+  //     "architecture",
+  //     "history",
+  //     "marble",
+  //     "views",
+  //     "tourism",
+  //     "travel",
+  //     "iconic",
+  //   ],
+  // },
 ];
+
+export const dummyData2 = [
+  {
+    "imgSrc": "https://pc-tablet.co.in/wp-content/uploads/2024/01/Top-5-Pre-Owned-Smartphone-Players-to-Look-Out-for-in-2024.jpg",
+    "imgSrcSet": "https://pc-tablet.co.in/wp-content/uploads/2024/01/Top-5-Pre-Owned-Smartphone-Players-to-Look-Out-for-in-2024.jpg 2x",
+    "appName": "Shop3",
+    "alt": "Smartphones",
+    "title": "Smartphones",
+    "location": "Online",
+    "views": "12.5k views",
+    "time": "2 hours ago",
+    "tags": [
+      "tech",
+      "smartphone",
+      "electronics",
+      "gadgets",
+      "innovation",
+      "new arrivals",
+      "top rated",
+      "best sellers",
+      "mobile",
+      "shop"
+    ]
+  },  
+  {
+    "imgSrc": "https://hips.hearstapps.com/hmg-prod/images/wireless-earbuds-1661183784.jpg",
+    "imgSrcSet": "https://hips.hearstapps.com/hmg-prod/images/wireless-earbuds-1661183784.jpg 2x",
+    "appName": "Shop3",
+    "alt": "Wireless Headphones",
+    "title": "Wireless Headphones",
+    "location": "Online",
+    "views": "8.9k views",
+    "time": "4 hours ago",
+    "tags": [
+      "tech",
+      "headphones",
+      "electronics",
+      "audio",
+      "wireless",
+      "bluetooth",
+      "accessories",
+      "music",
+      "shop",
+      "deals"
+    ]
+  },
+  {
+    "imgSrc": "https://engineeringproductdesign.com/wp-content/uploads/apple_watches_microphone.png",
+    "imgSrcSet": "https://engineeringproductdesign.com/wp-content/uploads/apple_watches_microphone.png 2x",
+    "appName": "Shop3",
+    "alt": "Smartwatches",
+    "title": "Smartwatches",
+    "location": "Online",
+    "views": "10.1k views",
+    "time": "1 hour ago",
+    "tags": [
+      "tech",
+      "smartwatch",
+      "electronics",
+      "wearable",
+      "fitness",
+      "innovation",
+      "smart",
+      "lifestyle",
+      "shop",
+      "latest"
+    ]
+  },
+  {
+    "imgSrc": "https://contentstatic.techgig.com/photo/106927668/best-gaming-laptops-to-consider-in-2024.jpg?989012",
+    "imgSrcSet": "https://contentstatic.techgig.com/photo/106927668/best-gaming-laptops-to-consider-in-2024.jpg?989012 2x",
+    "appName": "Shop3",
+    "alt": "Gaming Laptops",
+    "title": "Gaming Laptops",
+    "location": "Online",
+    "views": "15.2k views",
+    "time": "3 hours ago",
+    "tags": [
+      "tech",
+      "laptop",
+      "gaming",
+      "electronics",
+      "high performance",
+      "graphics",
+      "innovation",
+      "best sellers",
+      "shop",
+      "deals"
+    ]
+  },
+  {
+    "imgSrc": "https://assets.architecturaldigest.in/photos/60084d6feebcfd50ede87d35/master/w_1600%2Cc_limit/best-smart-TVs-in-india-mi-tv-4x-1.jpg",
+    "imgSrcSet": "https://assets.architecturaldigest.in/photos/60084d6feebcfd50ede87d35/master/w_1600%2Cc_limit/best-smart-TVs-in-india-mi-tv-4x-1.jpg 2x",
+    "appName": "Shop3",
+    "alt": "Smart TVs",
+    "title": "Smart TVs",
+    "location": "Online",
+    "views": "13.8k views",
+    "time": "5 hours ago",
+    "tags": [
+      "tech",
+      "tv",
+      "electronics",
+      "4K",
+      "smart",
+      "home entertainment",
+      "innovation",
+      "high resolution",
+      "best sellers",
+      "shop"
+    ]
+  },
+  {
+    "imgSrc": "https://www.telegraph.co.uk/content/dam/recommended/2022/10/11/TELEMMGLPICT000312343049_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg?imwidth=680",
+    "imgSrcSet": "https://www.telegraph.co.uk/content/dam/recommended/2022/10/11/TELEMMGLPICT000312343049_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg?imwidth=680 2x",
+    "appName": "Shop3",
+    "alt": "Bluetooth Speakers",
+    "title": "Bluetooth Speakers",
+    "location": "Online",
+    "views": "9.4k views",
+    "time": "6 hours ago",
+    "tags": [
+      "tech",
+      "speaker",
+      "electronics",
+      "audio",
+      "bluetooth",
+      "portable",
+      "innovation",
+      "music",
+      "accessories",
+      "shop"
+    ]
+  },
+]

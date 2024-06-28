@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import useDetectDevice from "../../../customhook/useDetectDevice";
 import WrapperCard from "../../../components/Card/Card";
-import { dummyData } from "@/constant/dummyData";
+import { dummyData1, dummyData2 } from "@/constant/dummyData";
 
 const styles = {
   gridContainer: {
@@ -26,10 +26,22 @@ const Sample: React.FC = () => {
     }
   }, []);
   return (
+    <div>
+    <br />
+    <h1 className="h1 mb-4">&nbsp;&nbsp;Travel Central</h1>
     <div style={styles.gridContainer}>
-      {dummyData.map((item: any, index: number) => {
+      {dummyData1.map((item: any, index: number) => {
         return <WrapperCard key={index} data={item} address={address} />;
       })}
+    </div>
+    <br />
+    <br />
+    <h1 className="h1 mb-4">&nbsp;&nbsp;Shop3</h1>
+    <div style={styles.gridContainer}>
+      {dummyData2.map((item: any, index: number) => {
+        return <WrapperCard key={index} data={item} address={address} />;
+      })}
+    </div>
     </div>
   );
 };
