@@ -16,7 +16,7 @@ This allows decentralized apps to collaborate and contribute to the user's profi
 
 ![profile](screenshots/profile.png)
 
-Advertisers can upload a content, and we use AI to filter out the wallet addresses who will be interested in that content. The AI analyzes the content and fetches the tags, and then searches the AdGraph to find the wallet addresses who have shown interest in those tags.
+We built a service to demonstrate how this data can be used. Advertisers can upload a content, and we use AI to filter out the wallet addresses who will be interested in that content. The AI analyzes the content and fetches the tags, and then searches the AdGraph to find the wallet addresses who have shown interest in those tags.
 
 A sample request of how to read from AdGraph is in the [Integrating AdGraph](#integrating-adgraph) section.
 
