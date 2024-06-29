@@ -6,7 +6,7 @@ import { convertImgToBase64 } from "@/utils/base";
 import Image from "next/image";
 import Shop1 from "public/shop1.jpg";
 import Shop2 from "public/shop2.jpg";
-
+import Loading from "public/giphy.webp";
 import { Name } from "@coinbase/onchainkit/identity";
 import { useRouter } from "next/router";
 
@@ -76,7 +76,7 @@ const FileUpload = () => {
         );
 
         // Assign random colors to tags
-        setLoading(false);
+
         const colors: { [key: string]: string } = {};
         tags.forEach((tag: any, index: number) => {
           colors[tag] = getRandomColor(Number(index));
@@ -87,6 +87,7 @@ const FileUpload = () => {
         setTags(tags);
         setProfileTagMap(profile_tag_map);
         setTagColors(colors);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching tags and profile tag map:", error);
       }
@@ -114,7 +115,7 @@ const FileUpload = () => {
     <>
       <div className={styles.fileuploadview}>
         <div className={styles.firstBox}>
-          <div className={styles.txt1}>Single File Upload With Preview</div>
+          <div className={styles.txt1}>Upload File</div>
 
           <form onSubmit={FileUploadSubmit}>
             <div className="kb-file-upload">
@@ -171,7 +172,7 @@ const FileUpload = () => {
               </button>
             </div>
           </form>
-          {file && (
+          {/* {file && (
             <div className={styles.box}>
               <hr />
               <div className={styles.box2}>
@@ -200,18 +201,16 @@ const FileUpload = () => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
         </div>
         {loading == true ? (
-          <div className={styles.secondBox}>
-            <div className="loader">
-              <div className="inner one"></div>
-              <div className="inner two"></div>
-              <div className="inner three"></div>
-            </div>
+          <div className={styles.secondBox} style={{ paddingLeft: "20%" }}>
+            <Image src={Loading} width={300} height={200} alt={""} />
           </div>
         ) : tags.length === 0 ? (
-          <div className={styles.secondBox}>Upload file to view tags</div>
+          <div className={styles.secondBox}>
+            <div className={styles.txt1}>Upload file to view tags</div>
+          </div>
         ) : (
           <div className={styles.secondBox}>
             <div>
@@ -239,27 +238,35 @@ const FileUpload = () => {
               }}
             >
               <span className={styles.txt1}>Profiles Addresses</span>
-              {Array.from(profileTagMap.entries()).map(
-                ([address, tags], index) => (
-                  <div key={index} className={styles.innerdiv}>
-                    <Name address={address} showAddress />
-                    <div className={styles.flex}>
-                      {tags.map((tag: string, tagIndex: number) => (
-                        <span
-                          key={tagIndex}
-                          className={styles.tag}
-                          style={{
-                            backgroundColor: getRandomColor(Number(index)),
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )
+              {Array.from(profileTagMap.entries()).length > 0 ? (
+                <>
+                  {Array.from(profileTagMap.entries()).map(
+                    ([address, tags], index) => (
+                      <div key={index} className={styles.innerdiv}>
+                        <Name address={address} showAddress />
+                        <div className={styles.flex}>
+                          {tags.map((tag: string, tagIndex: number) => (
+                            <span
+                              key={tagIndex}
+                              className={styles.tag}
+                              style={{
+                                backgroundColor: getRandomColor(Number(index)),
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  )}
+                </>
+              ) : (
+                <div style={{ marginTop: "24px" }}>
+                  No Address Found for matching tags please try with some
+                  different image
+                </div>
               )}
-              {/* </Stack> */}
             </div>
           </div>
         )}
@@ -280,21 +287,6 @@ const FileUpload = () => {
             onClick={handleRedirect}
           >
             Sample Shop 1
-          </button>
-        </div>
-        <div className={styles.miniBox}>
-          <Image
-            src={Shop1}
-            width={500}
-            height={500}
-            alt={"shop1"}
-            style={{ borderRadius: "8px" }}
-          />
-          <button
-            className="btn btn-primary form-submit"
-            onClick={handleRedirect2}
-          >
-            Sample Shop 2{" "}
           </button>
         </div>
       </div>

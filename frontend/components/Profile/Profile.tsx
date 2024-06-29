@@ -7,6 +7,7 @@ import Loading from "public/giphy.webp";
 import Cross from "public/Cross.png";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useCBWSDK } from "@/context/CBWSDKReactContextProvider";
 
 const DisplayGraph = dynamic(
   () => import("../DisplayGraph/DisplayGraph").then((mod) => mod.DisplayGraph),
@@ -63,6 +64,18 @@ const ProfileList = () => {
     if (accountsChanged != null) fetchdata(accountsChanged);
   }, [accountsChanged]);
 
+  const { provider }: any = useCBWSDK();
+  const handleConnect = async () => {
+    setLoading(true);
+    console.log("connn2");
+    await provider.enable();
+    const tt = localStorage.getItem(
+      "-walletlink:https://www.walletlink.org:Addresses"
+    );
+    setAccountsChanged(tt);
+    setLoading(false);
+  };
+
   React.useEffect(() => {
     console.log("profileData", tags[0]);
   }, [tags, appName]);
@@ -89,7 +102,7 @@ const ProfileList = () => {
                 appName.map((item: any, indexMain: number) => {
                   return (
                     <div className={styles.ProfileName}>
-                      <h3
+                      <div
                         style={{
                           color: "white",
                           fontSize: "24px",
@@ -97,7 +110,22 @@ const ProfileList = () => {
                         className={styles.roww}
                       >
                         {item}
-                      </h3>
+                        <div
+                          onClick={() => {
+                            console.log("inside");
+                            writeContract({
+                              abi: ABI,
+                              address: CONTRACT,
+                              functionName: "block_app",
+                              args: [accountsChanged, item],
+                            });
+                            console.log("exec");
+                          }}
+                          className={styles.block}
+                        >
+                          Block App
+                        </div>
+                      </div>
                       <div className={styles.profileTags}>
                         {tags[indexMain].map((tag: any, index: any) => (
                           <>
@@ -109,6 +137,7 @@ const ProfileList = () => {
                               }}
                               onClick={() => {
                                 console.log("inside");
+                                console.log("inside", accountsChanged);
                                 writeContract({
                                   abi: ABI,
                                   address: CONTRACT,
@@ -135,9 +164,56 @@ const ProfileList = () => {
                 })}
             </div>
           </div>
-          <div>
-            <DisplayGraph appNames={appName} Tags={tags} />
-          </div>
+
+          {appName.length > 0 ? (
+            <div>
+              <DisplayGraph appNames={appName} Tags={tags} />
+            </div>
+          ) : (
+            <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+              {/* Section header */}
+              <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+                <h1 className="h1 mb-4" data-aos="fade-up">
+                  Open, decentralized on-chain graph of user preferences
+                </h1>
+                <br />
+                <p
+                  className="text-xl text-gray-400 mb-8"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  As social and commerce shift onchain, wallets become
+                  identities. AdGraph builds onchain profiles of wallet
+                  addresses, capturing likes and preferences across all web3
+                  apps they use
+                </p>
+
+                {accountsChanged === null ? (
+                  <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
+                    <div data-aos="fade-up" data-aos-delay="400">
+                      <div
+                        className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0 cursor-pointer"
+                        onClick={handleConnect}
+                      >
+                        Connect Smart Wallet to Access Your Profile
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
+                    <div data-aos="fade-up" data-aos-delay="400">
+                      <a
+                        className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
+                        href="/sample"
+                      >
+                        Add Your Prefrences from Shop
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </>

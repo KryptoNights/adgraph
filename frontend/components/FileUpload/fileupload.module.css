@@ -109,6 +109,7 @@
   justify-content: space-between;
   align-content: center;
   align-items: center;
+  margin: auto;
   margin-top: 82px;
 }
 
@@ -117,4 +118,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 40px;
+
+  margin: auto;
+  /* width: 100%; */
 }
