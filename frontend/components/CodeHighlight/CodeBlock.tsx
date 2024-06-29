@@ -95,7 +95,7 @@ const CodeBlock = () => {
         Keep visiting our docs for further info. Note: This is an alpha product,
         things might break. Active development is going on to help make the
         usage and onboarding easy. We would love to speak with anyone interested
-        in it. Mail us at adgraph.support@debjit.dev for issues you’re facing or
+        in it. Mail us at adgraph@debjit.dev for issues you’re facing or
         custom GraphQL queries you need.
       </div>
     </div>

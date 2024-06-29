@@ -37,10 +37,23 @@ Integrating AdGraph is easy. You need to make a GET request like:
 ```ts
 axios.get('https://hollow-kilobyte-modern.functions.on-fleek.app', {
     params: {
-        profile: “0x4bec619bf1834bbe11f334117aca57bf68f0bc2c”,
-        app: “shop3”,
-        tags: “tag1,tag2,tag3”,
-        temporary_api_key: “appkey_testnet”
+        profile: "<user's wallet address>",
+        app: "<your app name>",
+        tags: "<comma separated tags>",
+        temporary_api_key: "appkey_testnet"
+    }
+});
+```
+
+For example,
+
+```ts
+axios.get('https://hollow-kilobyte-modern.functions.on-fleek.app', {
+    params: {
+        profile: "0x4bec619bf1834bbe11f334117aca57bf68f0bc2c",
+        app: "shop3",
+        tags: "tag1,tag2,tag3",
+        temporary_api_key: "appkey_testnet"
     }
 });
 ```
@@ -72,7 +85,7 @@ Endpoint: `https://api.studio.thegraph.com/proxy/80137/adgraph/v0.0.4/graphql`
 
 We are working on more diverse and better managed services for AdGraph. Keep visiting our docs for further info.
 
-Note: This is an alpha product, things might break. Active development is going on to help make the usage and onboarding easy. We would love to speak with anyone interested in it. Mail us at [adgraph.support@debjit.dev](mailto:adgraph.support@debjit.dev) for issues you’re facing or custom GraphQL queries you need.
+Note: This is an alpha product, things might break. Active development is going on to help make the usage and onboarding easy. We would love to speak with anyone interested in it. Mail us at [adgraph@debjit.dev](mailto:adgraph@debjit.dev) for issues you’re facing or custom GraphQL queries you need.
 
 # Tech we used
 
