@@ -53,7 +53,7 @@ export default function Zigzag() {
                   </p>
                 </div>
                 <h3 className="h4 mb-3">
-                  Try our sample sites to see the usecase:{" "}
+                  Try our sample site to see the usecase:{" "}
                 </h3>
 
                 <div
@@ -69,11 +69,11 @@ export default function Zigzag() {
                         className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
                         href="/sample"
                       >
-                        Sample Site 1
+                        Go to Shop
                       </a>
                     </div>
                   </div>
-                  <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
+                  {/* <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div data-aos="fade-up" data-aos-delay="400">
                       <a
                         className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
@@ -82,7 +82,7 @@ export default function Zigzag() {
                         Sample Site 2
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

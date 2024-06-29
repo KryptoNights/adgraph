@@ -8,8 +8,10 @@ export const wagmiConfig = createConfig({
   multiInjectedProviderDiscovery: false,
   connectors: [
     coinbaseWallet({
-      appName: "Builder",
+      appName: "AdGraph",
       preference: "all",
+      // appLogoUrl:
+      //   "https://raw.githubusercontent.com/KryptoNights/adgraph/main/frontend/public/logo.small.ico",
     }),
   ],
   ssr: true,

@@ -33,8 +33,11 @@ export function CBWSDKReactContextProvider({ children }: CBWSDKProviderProps) {
     let preference;
 
     cbwsdk = new CoinbaseWalletSDK403({
-      appName: "openProfile",
+      appName: "addGraph",
+
       appChainIds: [84532, 8452],
+      appLogoUrl:
+        "https://raw.githubusercontent.com/KryptoNights/adgraph/main/frontend/public/logo.small.ico",
     });
     preference = { options: "all" };
     setSdk(cbwsdk);

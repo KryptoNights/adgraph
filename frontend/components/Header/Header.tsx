@@ -46,9 +46,6 @@ const Header = () => {
     const accounts = localStorage.getItem(
       "-walletlink:https://www.walletlink.org:Addresses"
     );
-    setWalletInfo({
-      address: accounts,
-    });
     console.log("connec", accounts);
     if (accounts) {
       setConnected(true);
@@ -57,24 +54,34 @@ const Header = () => {
   }, []);
 
   const handleConnect = async () => {
-    setLoading(true);
-    console.log("connn", provider);
-    console.log("connn2");
-    await provider.enable();
-    setConnected(true);
-    const tt = localStorage.getItem(
-      "-walletlink:https://www.walletlink.org:Addresses"
-    );
-    setWalletInfo(tt);
-    console.log("connn2", tt);
-    setAccountsChanged(tt);
-    setLoading(false);
+    try {
+      setLoading(true);
+      console.log("connn", provider);
+      console.log("connn2");
+
+      await provider.enable();
+      setConnected(true);
+
+      const tt = localStorage.getItem(
+        "-walletlink:https://www.walletlink.org:Addresses"
+      );
+      setWalletInfo(tt);
+      console.log("connn2", tt);
+      setAccountsChanged(tt);
+    } catch (error) {
+      console.error("Error connecting:", error);
+      // Optionally, you can set some state to handle the error in the UI
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDisconnect = async () => {
     setLoading(true);
     await provider.disconnect();
     localStorage.clear();
+    setConnected(false);
+    setAccountsChanged(null);
     setLoading(false);
   };
 
@@ -109,7 +116,7 @@ const Header = () => {
           <CircularProgress />
         ) : connected ? (
           <>
-            {accountsChanged && accountsChanged[0] && (
+            {accountsChanged && (
               <div
                 className="flex h-10 items-center space-x-4"
                 onClick={handleDisconnect}
@@ -141,15 +148,14 @@ const Header = () => {
         <button className={`like-button`} onClick={handleRedirect2}>
           Profile
         </button>
-        <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-          <div data-aos="fade-up" data-aos-delay="400">
-            <a
-              className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
-              href="/advertise"
-            >
-              Advertise
-            </a>
-          </div>
+
+        <div data-aos="fade-up" data-aos-delay="400">
+          <a
+            className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
+            href="/advertise"
+          >
+            Advertise
+          </a>
         </div>
       </div>
     </div>
