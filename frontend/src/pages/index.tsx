@@ -1,3 +1,4 @@
+import CodeBlock from "../../components/CodeHighlight/CodeBlock";
 import Head from "../../components/Head/Head";
 import Features from "../../components/features";
 import Hero from "../../components/hero";
@@ -14,6 +15,7 @@ export default function Home() {
       />
       <Hero />
       <Zigzag />
+      <CodeBlock />
       <Features />
     </>
   );

@@ -145,10 +145,16 @@ const Header = () => {
           </>
         )}
 
-        <button className={`like-button`} onClick={handleRedirect2}>
-          Profile
-        </button>
+        {/* <button className={`like-button`} onClick={handleRedirect2}></button> */}
 
+        <div data-aos="fade-up" data-aos-delay="400">
+          <a
+            className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
+            href="/profile"
+          >
+            Profile
+          </a>
+        </div>
         <div data-aos="fade-up" data-aos-delay="400">
           <a
             className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0"
