@@ -52,7 +52,7 @@ const CodeBlock = () => {
   }, [codeString3]);
 
   return (
-    <div>
+    <div style={{ width: "80%", margin: "auto" }}>
       <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
         <h1 className="h1 mb-4">Guide To Integrate AdGraph</h1>
         <p className="text-xl text-gray-400"></p>
