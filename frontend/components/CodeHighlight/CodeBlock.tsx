@@ -5,7 +5,7 @@ import "highlight.js/styles/github.css"; // Import your preferred theme
 import styles from "./codeblock.module.css";
 
 const codeString = `
-    axios.get('https://hollow-kilobyte-modern.functions.on-fleek.app, {
+    axios.get('https://hollow-kilobyte-modern.functions.on-fleek.app', {
     params: {
     profile: “0x4bec619bf1834bbe11f334117aca57bf68f0bc2c”,
     app: “shop3”,
