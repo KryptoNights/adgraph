@@ -25,6 +25,7 @@ const getRandomColor = (index: number) => {
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [file, setFile] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [tags, setTags] = useState<string[]>([]);
   const [profileTagMap, setProfileTagMap] = useState(new Map());
@@ -68,12 +69,14 @@ const FileUpload = () => {
     if (selectedFile) {
       setFile(selectedFile);
       try {
+        setLoading(true);
         const res = await convertImgToBase64(selectedFile.fileimage);
         const { tags, profile_tag_map } = await get_wallets_and_tags_for_image(
           selectedFile.fileimage
         );
 
         // Assign random colors to tags
+        setLoading(false);
         const colors: { [key: string]: string } = {};
         tags.forEach((tag: any, index: number) => {
           colors[tag] = getRandomColor(Number(index));
@@ -89,6 +92,7 @@ const FileUpload = () => {
       }
     } else {
       alert("Please select a file");
+      setLoading(false);
     }
   };
 
@@ -198,7 +202,17 @@ const FileUpload = () => {
             </div>
           )}
         </div>
-        {tags.length !== 0 ? (
+        {loading == true ? (
+          <div className={styles.secondBox}>
+            <div className="loader">
+              <div className="inner one"></div>
+              <div className="inner two"></div>
+              <div className="inner three"></div>
+            </div>
+          </div>
+        ) : tags.length === 0 ? (
+          <div className={styles.secondBox}>Upload file to view tags</div>
+        ) : (
           <div className={styles.secondBox}>
             <div>
               <span className={styles.txt1}>Tags for Images</span>
@@ -248,8 +262,6 @@ const FileUpload = () => {
               {/* </Stack> */}
             </div>
           </div>
-        ) : (
-          ""
         )}
       </div>
 
