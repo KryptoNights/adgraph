@@ -95,6 +95,8 @@ We use Fleek functions to handle the several tag addition requests coming from a
 
 All the transaction execution code and paymaster integration is done right from within the Fleek function. So, adding the tag to the user’s onchain profile is as easy as calling the function with the user’s address and tag. It doesn’t need any pop ups etc.
 
+Read more about AdGraph and Fleek [here](https://t.ly/fKit5).
+
 ## CoinBase Paymaster
 
 We use CoinBase Paymaster to sponsor the transactions. This is crucial for the user experience, as the user doesn’t need to pay for the transactions. The app can sponsor the transaction, and the user can just use the app without worrying about the gas fees.
